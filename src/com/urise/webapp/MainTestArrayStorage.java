@@ -20,7 +20,6 @@ public class MainTestArrayStorage {
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r2);
 
-
         /**
          *  a new resume + update();
          */
