@@ -1,0 +1,4 @@
+*.xml
+.out
+basejava.iml
+.idea
