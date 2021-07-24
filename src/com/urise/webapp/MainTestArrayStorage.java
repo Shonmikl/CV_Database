@@ -1,6 +1,7 @@
 package com.urise.webapp;
 import com.urise.webapp.model.Resume;
 import com.urise.webapp.storage.ArrayStorage;
+import com.urise.webapp.storage.SortedArrayStorage;
 
 public class MainTestArrayStorage {
     private static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
@@ -8,9 +9,9 @@ public class MainTestArrayStorage {
     public static void main(String[] args) {
 
         final Resume r1 = new Resume();
-        r1.setUuid("uuid1");
+        r1.setUuid("uuid9");
         final Resume r2 = new Resume();
-        r2.setUuid("uuid2");
+        r2.setUuid("uuid33");
         final Resume r3 = new Resume();
         r3.setUuid("uuid3");
 
@@ -18,6 +19,10 @@ public class MainTestArrayStorage {
         ARRAY_STORAGE.save(r3);
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r2);
+
+
+
+
 
         /**
          *  a new resume + update();

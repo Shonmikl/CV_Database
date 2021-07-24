@@ -1,13 +1,15 @@
 package com.urise.webapp;
 import com.urise.webapp.model.Resume;
 import com.urise.webapp.storage.ArrayStorage;
+import com.urise.webapp.storage.SortedArrayStorage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainArray {
-    private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+   // private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+    final static SortedArrayStorage sas = new SortedArrayStorage();
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -29,23 +31,23 @@ public class MainArray {
                     printAll();
                     break;
                 case "size":
-                    System.out.println(ARRAY_STORAGE.size());
+                    System.out.println(sas.size());
                     break;
                 case "save":
                     r = new Resume();
                     r.setUuid(uuid);
-                    ARRAY_STORAGE.save(r);
+                    sas.save(r);
                     printAll();
                     break;
                 case "delete":
-                    ARRAY_STORAGE.delete(uuid);
+                    sas.delete(uuid);
                     printAll();
                     break;
                 case "get":
-                    System.out.println(ARRAY_STORAGE.get(uuid));
+                    System.out.println(sas.get(uuid));
                     break;
                 case "clear":
-                    ARRAY_STORAGE.clear();
+                    sas.clear();
                     printAll();
                     break;
                 case "exit":
@@ -58,7 +60,7 @@ public class MainArray {
     }
 
     static void printAll() {
-        Resume[] all = ARRAY_STORAGE.getAll();
+        Resume[] all = sas.getAll();
         System.out.println("----------------------------");
         if (all.length == 0) {
             System.out.println("Empty");
