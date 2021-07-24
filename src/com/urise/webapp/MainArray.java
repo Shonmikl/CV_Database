@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainArray {
-   // private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+    private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
     final static SortedArrayStorage sas = new SortedArrayStorage();
 
     public static void main(String[] args) throws IOException {
@@ -31,23 +31,23 @@ public class MainArray {
                     printAll();
                     break;
                 case "size":
-                    System.out.println(sas.size());
+                    System.out.println(ARRAY_STORAGE.size());
                     break;
                 case "save":
                     r = new Resume();
                     r.setUuid(uuid);
-                    sas.save(r);
+                    ARRAY_STORAGE.save(r);
                     printAll();
                     break;
                 case "delete":
-                    sas.delete(uuid);
+                    ARRAY_STORAGE.delete(uuid);
                     printAll();
                     break;
                 case "get":
-                    System.out.println(sas.get(uuid));
+                    System.out.println(ARRAY_STORAGE.get(uuid));
                     break;
                 case "clear":
-                    sas.clear();
+                    ARRAY_STORAGE.clear();
                     printAll();
                     break;
                 case "exit":
@@ -60,7 +60,7 @@ public class MainArray {
     }
 
     static void printAll() {
-        Resume[] all = sas.getAll();
+        Resume[] all = ARRAY_STORAGE.getAll();
         System.out.println("----------------------------");
         if (all.length == 0) {
             System.out.println("Empty");
