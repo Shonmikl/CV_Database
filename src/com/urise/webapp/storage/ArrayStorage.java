@@ -1,8 +1,6 @@
 package com.urise.webapp.storage;
 import com.urise.webapp.model.Resume;
 
-import java.util.Arrays;
-
 public class ArrayStorage extends AbstractArrayStorage {
 
     public void update(Resume r) {
