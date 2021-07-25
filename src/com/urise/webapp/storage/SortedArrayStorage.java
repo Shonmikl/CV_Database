@@ -4,24 +4,20 @@ import java.util.Arrays;
 
 public class SortedArrayStorage extends AbstractArrayStorage{
 
+
     @Override
-    public void update(Resume r) {
+    protected void insert(Resume r, int index) {
+        int insert = - index -1;
+        System.arraycopy(storage, insert, storage, insert + 1, size - insert);
+
     }
 
     @Override
-    public void save(Resume r) {
-        if (getIndex(r.getUuid()) != -1) {
-            System.out.println("Resume " + r.getUuid() + " already exists");
-        } else if (size >= STORAGE_LIMIT) {
-            System.out.println("Storage overflow");
-        } else {
-            storage[size] = r;
-            size++;
+    protected void moveArray(int index) {
+        int element = size - index -1;
+        if(element > 0) {
+            System.arraycopy(storage, index+1, storage, index, element);
         }
-    }
-
-    @Override
-    public void delete(String uuid) {
     }
 
     @Override
