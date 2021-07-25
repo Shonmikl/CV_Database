@@ -4,12 +4,10 @@ import java.util.Arrays;
 
 public class SortedArrayStorage extends AbstractArrayStorage{
 
-
     @Override
     protected void insert(Resume r, int index) {
         int insert = - index -1;
         System.arraycopy(storage, insert, storage, insert + 1, size - insert);
-
     }
 
     @Override
