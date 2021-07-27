@@ -8,12 +8,9 @@ public class MainTestArrayStorage {
 
     public static void main(String[] args) {
 
-        final Resume r1 = new Resume();
-        r1.setUuid("uuid9");
-        final Resume r2 = new Resume();
-        r2.setUuid("uuid33");
-        final Resume r3 = new Resume();
-        r3.setUuid("uuid3");
+        final Resume r1 = new Resume("uuid9");
+        final Resume r2 = new Resume("uuid33");
+        final Resume r3 = new Resume("uuid3");
 
         ARRAY_STORAGE.save(r3);
         ARRAY_STORAGE.save(r1);
@@ -22,8 +19,7 @@ public class MainTestArrayStorage {
         /**
          *  a new resume + update();
          */
-        Resume r4 = new Resume();
-        r4.setUuid("uuid9");
+        Resume r4 = new Resume("uuid9");
         ARRAY_STORAGE.update(r4);
 
         System.out.println("Get r1: " + ARRAY_STORAGE.get(r1.getUuid()));
