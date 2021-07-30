@@ -4,7 +4,6 @@ import com.urise.webapp.model.Resume;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public class MainReflection {
 
@@ -17,10 +16,7 @@ public class MainReflection {
         field.set(r, "new_uuid");
 
         // TODO : invoke r.toString via reflection
-        Method[] findToString = r.getClass().getMethods();
-        for (Method m : findToString) {
-            System.out.println(m.toString());
-        }
+
         r.getClass().getMethod("toString");
     }
 }
