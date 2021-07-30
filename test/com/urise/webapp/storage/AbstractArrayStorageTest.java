@@ -7,50 +7,43 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class AbstractArrayStorageTest {
+public class AbstractArrayStorageTest {
+    private static Storage STORAGE;
+    private static final String ID_3 = "3";
+    private static final String ID_2 = "2";
+    private static final String ID_1 = "1";
 
-    private static Storage storage = new ArrayStorage();
 
     @BeforeAll
-    public static void setUp() throws Exception {
+    public static void setUp() {
 
-        storage.clear();
-        storage.save(new Resume("uuid1"));
-        storage.save(new Resume("uuid2"));
-        storage.save(new Resume("uuid3"));
-
+        STORAGE.save(new Resume(ID_1));
+        STORAGE.save(new Resume(ID_2));
+        STORAGE.save(new Resume(ID_3));
     }
 
     @Test
-    void clear() throws Exception {
-        Assertions.assertEquals(0, storage.size());
+    void clear() {
     }
 
     @Test
-    void update() throws Exception {
-
+    void update() {
     }
 
     @Test
-    void save() throws Exception{
-
+    void save() {
     }
 
     @Test
-    void get() throws Exception{
+    void delete() {
     }
 
     @Test
-    void delete() throws Exception{
-        Assertions.assertEquals(2, storage.size());
+    void getAll() {
     }
 
     @Test
-    void getAll() throws Exception{
-    }
-
-    @Test
-    void size() throws Exception{
-        Assertions.assertEquals(3, storage.size());
+    void size() {
+        Assertions.assertEquals(3, STORAGE.size());
     }
 }
