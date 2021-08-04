@@ -1,5 +1,6 @@
 package com.urise.webapp.storage;
 
+import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AbstractArrayStorageTest {
-    private static Storage STORAGE;
+    private static Storage storage = new SortedArrayStorage();
+
     private static final String ID_3 = "3";
     private static final String ID_2 = "2";
     private static final String ID_1 = "1";
@@ -17,13 +19,14 @@ public class AbstractArrayStorageTest {
     @BeforeAll
     public static void setUp() {
 
-        STORAGE.save(new Resume(ID_1));
-        STORAGE.save(new Resume(ID_2));
-        STORAGE.save(new Resume(ID_3));
+        storage.save(new Resume(ID_1));
+        storage.save(new Resume(ID_2));
+        storage.save(new Resume(ID_3));
     }
 
     @Test
     void clear() {
+        Assertions.assertNull(null);
     }
 
     @Test
@@ -40,10 +43,11 @@ public class AbstractArrayStorageTest {
 
     @Test
     void getAll() {
+
     }
 
     @Test
     void size() {
-        Assertions.assertEquals(3, STORAGE.size());
+        assertEquals(3, storage.size());
     }
 }
