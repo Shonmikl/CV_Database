@@ -19,7 +19,7 @@ public class MainReflection {
         // TODO : invoke r.toString via reflection
 
         Method method = r.getClass().getDeclaredMethod("toString");
-        method.setAccessible(true);
-        method.invoke(r);
+        System.out.println(method.invoke(r).toString());
+
     }
 }
