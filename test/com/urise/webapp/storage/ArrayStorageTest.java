@@ -1,20 +1,24 @@
 package com.urise.webapp.storage;
 
+import com.urise.webapp.model.Resume;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ArrayStorageTest {
+class ArrayStorageTest extends AbstractArrayStorage {
 
-    @Test
-    void insert() {
+    @Override
+    protected void insert(Resume r, int index) {
+
     }
 
-    @Test
-    void moveArray() {
+    @Override
+    protected void moveArray(int index) {
+
     }
 
-    @Test
-    void getIndex() {
+    @Override
+    protected int getIndex(String uuid) {
+        return 0;
     }
 }
