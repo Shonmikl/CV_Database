@@ -2,7 +2,6 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.exeption.ExistStorageException;
 import com.urise.webapp.exeption.NotExistStorageException;
-import com.urise.webapp.exeption.StorageException;
 import com.urise.webapp.model.Resume;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,17 +11,21 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AbstractArrayStorageTest {
+public abstract class AbstractArrayStorageTest {
+    private static Storage storage;
 
     private final static String ID_1 = "1";
     private final static String ID_2 = "2";
     private final static String ID_3 = "3";
 
-    private static Storage storage = new SortedArrayStorage();
+    protected AbstractArrayStorageTest(Storage storage) {
+        AbstractArrayStorageTest.storage = storage;
+    }
+
 
     @BeforeAll
-    public static void setUp() {
-        AbstractArrayStorage.size = 0;
+    static void setUp() {
+        storage.clear();
         storage.save(new Resume(ID_1));
         storage.save(new Resume(ID_2));
         storage.save(new Resume(ID_3));
@@ -51,9 +54,10 @@ public class AbstractArrayStorageTest {
         assertThrows(ExistStorageException.class, ()->storage.save(new Resume("Exist")));
     }
 
-//    @Test
-//    void saveOverflow() {
-//    }
+    @Test
+    void saveOverflow() {
+
+   }
 
     @Test
     void save() {
@@ -76,7 +80,7 @@ public class AbstractArrayStorageTest {
 
     @Test
     void getAll() {
-        Resume getAllExpected[] = new Resume[3];
+        Resume[] getAllExpected = new Resume[3];
         getAllExpected[0] = new Resume(ID_1);
         getAllExpected[1] = new Resume(ID_2);
         getAllExpected[2] = new Resume(ID_3);
