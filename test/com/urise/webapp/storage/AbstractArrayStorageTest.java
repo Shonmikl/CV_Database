@@ -9,21 +9,25 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class AbstractArrayStorageTest {
-    private Storage storage;
+    Storage storage;
 
     private final static String ID_1 = "1";
     private final static String ID_2 = "2";
     private final static String ID_3 = "3";
 
-    protected AbstractArrayStorageTest(Storage storage) {
-        this.storage = storage;
+    public AbstractArrayStorageTest(Storage arrayStorage) {
+        this.storage = arrayStorage;
     }
+
 
     @BeforeEach
     void setUp() {
+
+
         storage.clear();
         storage.save(new Resume(ID_1));
         storage.save(new Resume(ID_2));
