@@ -3,35 +3,34 @@ package com.urise.webapp.storage;
 import com.urise.webapp.exeption.ExistStorageException;
 import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class AbstractArrayStorageTest {
-    Storage storage;
+    protected Storage storage;
 
     private final static String ID_1 = "1";
     private final static String ID_2 = "2";
     private final static String ID_3 = "3";
 
-    public AbstractArrayStorageTest(Storage arrayStorage) {
-        this.storage = arrayStorage;
-    }
+    Resume resume1 = new Resume(ID_1);
+    Resume resume2 = new Resume(ID_2);
+    Resume resume3 = new Resume(ID_3);
 
+    public AbstractArrayStorageTest(Storage storage) {
+        this.storage = storage;
+
+    }
 
     @BeforeEach
     void setUp() {
-
-
         storage.clear();
-        storage.save(new Resume(ID_1));
-        storage.save(new Resume(ID_2));
-        storage.save(new Resume(ID_3));
+        storage.save(resume1);
+        storage.save(resume2);
+        storage.save(resume3);
     }
 
     @Test
@@ -41,7 +40,7 @@ public abstract class AbstractArrayStorageTest {
     }
 
     @Test
-    void updateNotExistElement() {
+    void updateNotExistResume() {
         assertThrows(NotExistStorageException.class, () -> storage.update(new Resume("notExist")));
     }
 
@@ -52,43 +51,46 @@ public abstract class AbstractArrayStorageTest {
     }
 
     @Test
-    void saveExistElement() {
-        storage.save(new Resume("Exist"));
-        assertThrows(ExistStorageException.class, () -> storage.save(new Resume("Exist")));
+    void saveExistResume() {
+        assertThrows(ExistStorageException.class, () -> storage.save(new Resume("1")));
     }
 
-    @Test
-    void saveOverflow() {
-
-    }
+//    @Test
+//    void saveOverflow() {
+//        try {
+//            for (int i = 3; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
+//                storage.save(new Resume());
+//            }
+//        } catch (StorageException exception) {
+//            Assertions.fail();
+//        }
+//        storage.save(new Resume());
+//    }
 
     @Test
     void save() {
-        storage.save(new Resume("save"));
-        assertEquals(4, storage.size());
-        storage.delete("save");
+        assertEquals(3, storage.size());
+
     }
 
     @Test
-    void deleteNotExistElement() {
+    void deleteNotExistResume() {
         assertThrows(NotExistStorageException.class, () -> storage.delete("5"));
     }
 
     @Test
     void delete() {
         storage.delete(ID_1);
-        Assertions.assertEquals(2, storage.size());
-        storage.save(new Resume(ID_1));
+        assertThrows(NotExistStorageException.class, ()-> storage.get(ID_1));
+
     }
 
     @Test
     void getAll() {
-        Resume[] getAllExpected = new Resume[3];
-        getAllExpected[0] = new Resume(ID_1);
-        getAllExpected[1] = new Resume(ID_2);
-        getAllExpected[2] = new Resume(ID_3);
-
-        assertEquals(Arrays.toString(getAllExpected), Arrays.toString(storage.getAll()));
+        Resume[] getAllExpected = storage.getAll();
+        assertEquals(getAllExpected[0], resume1);
+        assertEquals(getAllExpected[1], resume2);
+        assertEquals(getAllExpected[2], resume3);
     }
 
     @Test
