@@ -11,9 +11,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public void clear() {
-        if(listStorage.size() > 0) {
             listStorage.clear();
-        }
     }
 
     @Override
@@ -26,7 +24,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public void save(Resume r) {
-       if(getIndex(r.getUuid()) > 0) {
+       if(getIndex(r.getUuid()) >= 0) {
            listStorage.add(r);
        } else {
            throw new ExistStorageException(r.getUuid());
