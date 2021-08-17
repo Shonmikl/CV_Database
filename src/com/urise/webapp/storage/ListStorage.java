@@ -3,13 +3,11 @@ package com.urise.webapp.storage;
 import com.urise.webapp.exeption.ExistStorageException;
 import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
-
 import java.util.LinkedList;
 import java.util.List;
 
 public class ListStorage extends AbstractStorage {
-    List<Resume> listStorage = new LinkedList<Resume>();
-
+    private List<Resume> listStorage = new LinkedList<>();
 
     @Override
     public void clear() {
@@ -20,18 +18,16 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public void update(Resume r) {
-        int index = listStorage.indexOf(r);
+        int index = getIndex(r.getUuid());
         if (index < 0) {
             throw new NotExistStorageException(r.getUuid());
-        } else {
-            listStorage.set(index, r);
-        }
+        } listStorage.set(index, r);
     }
 
     @Override
     public void save(Resume r) {
-       if(!listStorage.contains(r)) {
-           listStorage.add(listStorage.size(), r);
+       if(getIndex(r.getUuid()) > 0) {
+           listStorage.add(r);
        } else {
            throw new ExistStorageException(r.getUuid());
        }
@@ -42,13 +38,12 @@ public class ListStorage extends AbstractStorage {
         int index = getIndex(uuid);
         if (index < 0) {
             throw new NotExistStorageException(uuid);
-        } else listStorage.remove(index);
+        } listStorage.remove(index);
     }
 
     @Override
     public Resume[] getAll() {
-        Resume[] copyOfList = listStorage.toArray(new Resume[listStorage.size()]);
-        return copyOfList;
+        return listStorage.toArray(new Resume[listStorage.size()]);
     }
 
     @Override
@@ -56,7 +51,7 @@ public class ListStorage extends AbstractStorage {
         return listStorage.size();
     }
 
-    @Override
+    @Override //todo
     public Resume get(String uuid) {
         return null;
     }

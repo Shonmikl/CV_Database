@@ -10,7 +10,7 @@ import java.util.Arrays;
 public abstract class AbstractArrayStorage extends AbstractStorage{
     public static final int STORAGE_LIMIT = 10000;
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
-    public static int size = 0;
+    public int size;
 
     public void clear() {
         Arrays.fill(storage, 0, size, null);
@@ -21,9 +21,8 @@ public abstract class AbstractArrayStorage extends AbstractStorage{
         int index = getIndex(r.getUuid());
         if (index < 0) {
             throw new NotExistStorageException(r.getUuid());
-        } else {
-            storage[index] = r;
         }
+        storage[index] = r;
     }
 
     public void save(Resume r) {
@@ -32,10 +31,9 @@ public abstract class AbstractArrayStorage extends AbstractStorage{
             throw new ExistStorageException(r.getUuid());
         } else if (size >= STORAGE_LIMIT) {
            throw new StorageException("Overflow", r.getUuid());
-        } else {
-            insert(r, index);
-            size++;
         }
+        insert(r, index);
+        size++;
     }
 
     protected abstract void insert(Resume r, int index);
@@ -52,17 +50,16 @@ public abstract class AbstractArrayStorage extends AbstractStorage{
         int index = getIndex(uuid);
         if (index < 0) {
             throw new NotExistStorageException(uuid);
-        } else {
-            moveArray(index);
-            storage[size - 1] = null;
-            size--;
         }
+        moveArray(index);
+        storage[size - 1] = null;
+        size--;
     }
 
     protected abstract void moveArray(int index);
 
     public Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
+        return Arrays.copyOf(storage, size);
     }
 
     public int size() {
