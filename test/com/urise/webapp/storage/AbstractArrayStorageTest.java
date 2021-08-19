@@ -2,14 +2,11 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.exeption.ExistStorageException;
 import com.urise.webapp.exeption.NotExistStorageException;
-import com.urise.webapp.exeption.StorageException;
 import com.urise.webapp.model.Resume;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractArrayStorageTest {
     protected Storage storage;
@@ -57,17 +54,12 @@ public abstract class AbstractArrayStorageTest {
         assertThrows(ExistStorageException.class, () -> storage.save(new Resume("1")));
     }
 
-    @Test
-    void saveOverflow() {
-        try {
-            for (int i = 3; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
-                storage.save(new Resume());
-            }
-        } catch (StorageException exception) {
-            Assertions.fail();
-        }
-        storage.save(new Resume());
-    }
+//    @Test
+//    void saveOverflow() {
+//        for (int i = 3; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
+//            assertThrows(StorageException.class,()-> storage.save(new Resume()));
+//        }
+//    }
 
     @Test
     void save() {
@@ -91,7 +83,8 @@ public abstract class AbstractArrayStorageTest {
     @Test
     void getAll() {
         Resume[] getAllExpected = storage.getAll();
-        //assertArrayEquals(storage, getAllExpected);
+        Resume[] testStorage = {resume1, resume2, resume3};
+       assertArrayEquals(getAllExpected, testStorage);
     }
 
     @Test
