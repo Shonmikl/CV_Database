@@ -1,10 +1,10 @@
 package com.urise.webapp;
 
 import com.urise.webapp.model.Resume;
-import com.urise.webapp.storage.ListStorage;
+import com.urise.webapp.storage.ArrayStorage;
 
 public class MainTestArrayStorage {
-    private static final ListStorage ARRAY_STORAGE = new ListStorage();
+    private static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
 
     public static void main(String[] args) {
 

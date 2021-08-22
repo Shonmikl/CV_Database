@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class AbstractArrayStorageTest {
+public abstract class AbstractStorageTest {
     protected Storage storage;
 
-    private final static String ID_1 = "1";
+    private final static String ID_1 = "111";
     private final static String ID_2 = "2";
     private final static String ID_3 = "3";
 
@@ -20,7 +20,7 @@ public abstract class AbstractArrayStorageTest {
     protected Resume resume2 = new Resume(ID_2);
     protected Resume resume3 = new Resume(ID_3);
 
-    public AbstractArrayStorageTest(Storage storage) {
+    public AbstractStorageTest(Storage storage) {
         this.storage = storage;
     }
 
@@ -45,14 +45,14 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     void update() {
-        Resume resume4 = new Resume("1");
+        Resume resume4 = new Resume("111");
         storage.update(resume1);
         assertEquals(resume4.getUuid(), resume1.getUuid());
     }
 
     @Test
     void saveExistResume() {
-        assertThrows(ExistStorageException.class, () -> storage.save(new Resume("1")));
+        assertThrows(ExistStorageException.class, () -> storage.save(new Resume("111")));
     }
 
     @Test
@@ -80,14 +80,13 @@ public abstract class AbstractArrayStorageTest {
     void delete() {
         storage.delete(ID_1);
         assertEquals(2, storage.size());
-
     }
 
     @Test
     void getAll() {
-        Resume[] getAllExpected = storage.getAll();
+        Resume[] expectedStorage = storage.getAll();
         Resume[] testStorage = {resume1, resume2, resume3};
-        assertArrayEquals(getAllExpected, testStorage);
+        assertArrayEquals(testStorage, expectedStorage);
     }
 
     @Test

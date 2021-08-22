@@ -1,13 +1,12 @@
 package com.urise.webapp.storage;
 
-import com.urise.webapp.exeption.ExistStorageException;
-import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class ListStorage extends AbstractStorage {
-    private List<Resume> listStorage = new LinkedList<>();
+    private final List<Resume> listStorage = new LinkedList<>();
 
     @Override
     public void clear() {
@@ -15,30 +14,43 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    public void update(Resume r) {
-        int index = getIndex(r.getUuid());
-        if (index < 0) {
-            throw new NotExistStorageException(r.getUuid());
-        }
-        listStorage.set(index, r);
+    protected void updateElement(Resume r, Object key) {
+        listStorage.set((Integer) key, r);
     }
 
     @Override
-    public void save(Resume r) {
-        if (getIndex(r.getUuid()) < 0) {
-            listStorage.add(r);
-        } else {
-            throw new ExistStorageException(r.getUuid());
-        }
+    protected void saveElement(Resume r, Object key) {
+        listStorage.add(r);
     }
 
     @Override
-    public void delete(String uuid) {
-        int index = getIndex(uuid);
-        if (index < 0) {
-            throw new NotExistStorageException(uuid);
+    protected boolean isKeyExist(Object key) {
+        return listStorage.contains(key);
+    }
+
+    @Override
+    protected Object getKey(String uuid) {
+        for (int i = 0; i < listStorage.size(); i++) {
+            if (listStorage.get(i).getUuid().equals(uuid)) {
+                return i;
+            }
         }
-        listStorage.remove(index);
+        return null;
+    }
+
+    @Override
+    protected void deleteElement(Object key) {
+        listStorage.remove(key);
+    }
+
+    @Override
+    protected void insert(Resume r, int index) {
+
+    }
+
+    @Override
+    protected Resume getElement(Object key) {
+        return listStorage.get((Integer) key);
     }
 
     @Override
@@ -53,14 +65,12 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public Resume get(String uuid) {
-        int index = getIndex(uuid);
-        if (index < 0) {
-            throw new NotExistStorageException(uuid);
-        }
-        return listStorage.get(index);
+        getExistedKey(uuid);
+        return listStorage.get((Integer) getKey(uuid));
     }
 
-    public int getIndex(String uuid) {
-        return listStorage.indexOf(new Resume(uuid));
+    @Override
+    protected void moveArray(int index) {
+
     }
 }
