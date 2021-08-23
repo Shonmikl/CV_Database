@@ -27,7 +27,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected void updateElement(Resume r, Object key) {
-        storage[(Integer) key] = r;
+        storage[(int) key] = r;
     }
 
     @Override
@@ -35,13 +35,13 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         if (size >= STORAGE_LIMIT) {
             throw new StorageException("Overflow", r.getUuid());
         }
-        insert(r, (Integer) key);
+        insert(r, ((int) key));
         size++;
     }
 
     @Override
     protected void deleteElement(Object key) {
-        moveArray((Integer) key);
+        moveArray((int) key);
         storage[size - 1] = null;
         size--;
     }
@@ -52,11 +52,11 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected boolean isKeyExist(Object key) {
-        return (Integer) key >= 0;
+        return (int) key >= 0;
     }
 
     @Override
     protected Resume getElement(Object key) {
-        return storage[(Integer) key];
+        return storage[(int) key];
     }
 }

@@ -9,27 +9,7 @@ public class ListStorage extends AbstractStorage {
     private final List<Resume> listStorage = new LinkedList<>();
 
     @Override
-    public void clear() {
-        listStorage.clear();
-    }
-
-    @Override
-    protected void updateElement(Resume r, Object key) {
-        listStorage.set((Integer) key, r);
-    }
-
-    @Override
-    protected void saveElement(Resume r, Object key) {
-        listStorage.add(r);
-    }
-
-    @Override
-    protected boolean isKeyExist(Object key) {
-        return listStorage.contains(key);
-    }
-
-    @Override
-    protected Object getKey(String uuid) {
+    protected Integer getKey(String uuid) {
         for (int i = 0; i < listStorage.size(); i++) {
             if (listStorage.get(i).getUuid().equals(uuid)) {
                 return i;
@@ -39,18 +19,33 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected void deleteElement(Object key) {
-        listStorage.remove(key);
+    protected boolean isKeyExist(Object key) {
+        return key != null;
     }
 
     @Override
-    protected void insert(Resume r, int index) {
+    protected void updateElement(Resume r, Object key) {
+        listStorage.set((int) key, r);
+    }
 
+    @Override
+    protected void saveElement(Resume r, Object key) {
+        listStorage.add(r);
+    }
+
+    @Override
+    public void clear() {
+        listStorage.clear();
     }
 
     @Override
     protected Resume getElement(Object key) {
-        return listStorage.get((Integer) key);
+        return listStorage.get((int) key);
+    }
+
+    @Override
+    protected void deleteElement(Object key) {
+        listStorage.remove(getElement(key));
     }
 
     @Override
@@ -61,16 +56,5 @@ public class ListStorage extends AbstractStorage {
     @Override
     public int size() {
         return listStorage.size();
-    }
-
-    @Override
-    public Resume get(String uuid) {
-        getExistedKey(uuid);
-        return listStorage.get((Integer) getKey(uuid));
-    }
-
-    @Override
-    protected void moveArray(int index) {
-
     }
 }

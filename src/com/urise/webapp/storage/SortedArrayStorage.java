@@ -8,14 +8,14 @@ public class SortedArrayStorage extends AbstractArrayStorage {
 
     @Override
     protected void insert(Resume r, int index) {
-        int insert = -index - 1;
+        int insert = - index - 1;
         System.arraycopy(storage, insert, storage, insert + 1, size - insert);
         storage[insert] = r;
     }
 
     @Override
     protected Integer getKey(String uuid) {
-        Resume searchKey = new Resume();
+        Resume searchKey = new Resume(uuid);
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
 

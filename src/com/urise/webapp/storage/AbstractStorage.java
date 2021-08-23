@@ -5,19 +5,17 @@ import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
 
 public abstract class AbstractStorage implements Storage {
-    protected abstract void updateElement(Resume r, Object key);
-
-    protected abstract void saveElement(Resume r, Object key);
-
-    protected abstract boolean isKeyExist(Object key);
 
     protected abstract Object getKey(String uuid);
 
-    protected abstract void deleteElement(Object key);
+    protected abstract void updateElement(Resume r, Object key);
 
-    protected abstract void insert(Resume r, int index);
+    protected abstract boolean isKeyExist(Object key);
 
+    protected abstract void saveElement(Resume r, Object key);
     protected abstract Resume getElement(Object key);
+
+    protected abstract void deleteElement(Object key);
 
     public void update(Resume r) {
         Object key = getExistedKey(r.getUuid());
@@ -54,6 +52,4 @@ public abstract class AbstractStorage implements Storage {
         }
         return key;
     }
-
-    protected abstract void moveArray(int index);
 }

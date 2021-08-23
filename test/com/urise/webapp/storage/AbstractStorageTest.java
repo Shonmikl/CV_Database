@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class AbstractStorageTest {
     protected Storage storage;
 
-    private final static String ID_1 = "111";
+    private final static String ID_1 = "1";
     private final static String ID_2 = "2";
     private final static String ID_3 = "3";
 
@@ -45,30 +45,29 @@ public abstract class AbstractStorageTest {
 
     @Test
     void update() {
-        Resume resume4 = new Resume("111");
+        Resume resume4 = new Resume(ID_1);
         storage.update(resume1);
-        assertEquals(resume4.getUuid(), resume1.getUuid());
+        assertEquals(resume4.toString(), resume1.toString());
     }
 
     @Test
     void saveExistResume() {
-        assertThrows(ExistStorageException.class, () -> storage.save(new Resume("111")));
+        assertThrows(ExistStorageException.class, () -> storage.save(new Resume(ID_1)));
     }
 
     @Test
     void saveOverflow() {
-        assertThrows(StorageException.class, () -> {
-            for (int i = 0; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
-                storage.save(new Resume());
-            }
-        });
+        for (int i = 0; i <= AbstractArrayStorage.STORAGE_LIMIT - 4; i++) {
+            storage.save(new Resume());
+        }
+        assertThrows(StorageException.class, () -> storage.save(new Resume()));
     }
 
     @Test
     void save() {
-        storage.save(new Resume("newSave"));
-        assertEquals(4, storage.size());
-
+        Resume test = new Resume("newSave");
+        storage.save(test);
+        assertEquals(test.toString(), "newSave");
     }
 
     @Test
@@ -79,7 +78,7 @@ public abstract class AbstractStorageTest {
     @Test
     void delete() {
         storage.delete(ID_1);
-        assertEquals(2, storage.size());
+         assertThrows(NotExistStorageException.class, ()-> storage.get(ID_1));
     }
 
     @Test
