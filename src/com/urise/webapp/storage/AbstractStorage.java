@@ -13,6 +13,7 @@ public abstract class AbstractStorage implements Storage {
     protected abstract boolean isKeyExist(Object key);
 
     protected abstract void saveElement(Resume r, Object key);
+
     protected abstract Resume getElement(Object key);
 
     protected abstract void deleteElement(Object key);

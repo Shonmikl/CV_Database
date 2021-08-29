@@ -24,6 +24,7 @@
         <SOURCES>
           <root url="jar://$USER_HOME$/.ideaLibSources/junit-jupiter-api-5.7.0-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/junit-jupiter-api-5.7.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/opentest4j-1.2.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -43,6 +44,7 @@
         <SOURCES>
           <root url="jar://$USER_HOME$/.ideaLibSources/junit-jupiter-api-5.7.0-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/junit-jupiter-api-5.7.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/opentest4j-1.2.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
