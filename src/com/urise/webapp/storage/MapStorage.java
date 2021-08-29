@@ -10,7 +10,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected Object getKey(String uuid) {
-       return uuid;
+        return uuid;
     }
 
     @Override
