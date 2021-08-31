@@ -57,16 +57,6 @@ public abstract class AbstractStorageTest {
     }
 
     @Test
-    void saveOverflow() {
-        assertDoesNotThrow(
-                ()->  {
-                    for (int i = storage.size(); i < AbstractArrayStorage.STORAGE_LIMIT; i++) {
-                        storage.save(new Resume());
-                    }
-                     } , "overflow happened ahead of time");
-    }
-
-    @Test
     void save() {
         Resume test = new Resume("newSave");
         storage.save(test);
