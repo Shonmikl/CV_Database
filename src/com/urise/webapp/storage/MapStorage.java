@@ -2,12 +2,12 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class MapStorage extends AbstractStorage {
-    Map<String, Resume> mapStorage = new TreeMap<>();
+    Map<String, Resume> mapStorage = new HashMap<>();
 
     @Override
     protected Object getKey(String uuid) {
