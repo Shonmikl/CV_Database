@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MapStorage extends AbstractStorage {
-    Map<String, Resume> mapStorage = new HashMap<>();
+    private final Map<String, Resume> mapStorage = new HashMap<>();
 
     @Override
     protected Object getKey(String uuid) {

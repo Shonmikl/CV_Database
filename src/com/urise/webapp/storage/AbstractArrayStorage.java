@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class AbstractArrayStorage extends AbstractStorage {
-    public static final int STORAGE_LIMIT = 10;
+    protected static final int STORAGE_LIMIT = 10;
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
-    public int size;
+    protected int size;
 
     protected abstract void moveArray(int index);
 
