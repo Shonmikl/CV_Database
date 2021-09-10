@@ -17,9 +17,9 @@ public abstract class AbstractStorageTest {
     private final static String ID_2 = "2";
     private final static String ID_3 = "3";
 
-    protected Resume resume1 = new Resume(ID_1);
-    protected Resume resume2 = new Resume(ID_2);
-    protected Resume resume3 = new Resume(ID_3);
+    protected Resume resume1 = new Resume(ID_1, "name1");
+    protected Resume resume2 = new Resume(ID_2, "name2");
+    protected Resume resume3 = new Resume(ID_3, "name3");
 
     public AbstractStorageTest(Storage storage) {
         this.storage = storage;
@@ -41,26 +41,26 @@ public abstract class AbstractStorageTest {
 
     @Test
     void updateNotExistResume() {
-        assertThrows(NotExistStorageException.class, () -> storage.update(new Resume("notExist")));
+        assertThrows(NotExistStorageException.class, () -> storage.update(new Resume("TEST", "TEST")));
     }
 
     @Test
     void update() {
-        Resume resume4 = new Resume(ID_1);
+        Resume resume4 = new Resume(ID_1, "TEST");
         storage.update(resume1);
         assertEquals(resume4, storage.get(ID_1));
     }
 
     @Test
     void saveExistResume() {
-        assertThrows(ExistStorageException.class, () -> storage.save(new Resume(ID_1)));
+        assertThrows(ExistStorageException.class, () -> storage.save(new Resume(ID_1, "name1")));
     }
 
     @Test
     void save() {
-        Resume test = new Resume("newSave");
+        Resume test = new Resume("newUuid", "testName" );
         storage.save(test);
-        assertEquals(test, storage.get("newSave"));
+        assertEquals(test, storage.get("newUuid"));
     }
 
     @Test

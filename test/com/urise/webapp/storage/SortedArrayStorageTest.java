@@ -15,7 +15,7 @@ public class SortedArrayStorageTest extends AbstractStorageTest {
         assertDoesNotThrow(
                 ()->  {
                     for (int i = storage.size(); i < AbstractArrayStorage.STORAGE_LIMIT; i++) {
-                        storage.save(new Resume());
+                        storage.save(new Resume("UUID_SORTED", "NAME_SORTED"));
                     }
                 } , "overflow happened ahead of time");
     }
