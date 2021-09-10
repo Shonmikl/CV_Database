@@ -2,55 +2,54 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class MapStorage extends AbstractStorage {
-    private final Map<String, Resume> mapStorage = new HashMap<>();
+public class MapResumeStorage extends AbstractStorage {
+    private final Map<String, Resume> hashMapStorage = new HashMap<>();
 
     @Override
     protected Object getKey(String uuid) {
+        //return hashMapStorage.get(uuid);
         return uuid;
     }
 
     @Override
     public void updateElement(Resume r, Object key) {
-        mapStorage.put((String) key, r);
+        hashMapStorage.put(r.getUuid(), r);
     }
 
     @Override
     public boolean isKeyExist(Object key) {
-        return mapStorage.containsKey(key);
+        return hashMapStorage.containsKey(key);
     }
 
     @Override
     public void saveElement(Resume r, Object key) {
-        mapStorage.putIfAbsent((String) key, r);
+        hashMapStorage.put(r.getUuid(), r);
     }
 
     @Override
     public Resume getElement(Object key) {
-        return mapStorage.get(key);
+        return hashMapStorage.get(key);
     }
 
     @Override
     public void deleteElement(Object key) {
-        mapStorage.remove(key);
+        hashMapStorage.remove(key);
     }
 
     @Override
     public void clear() {
-        mapStorage.clear();
+        hashMapStorage.clear();
     }
 
     @Override
     public List<Resume> getAllSorted() {
-        return mapStorage.values().stream().toList();
+        return new ArrayList<>(hashMapStorage.values());
     }
 
     @Override
     public int size() {
-        return mapStorage.size();
+        return hashMapStorage.size();
     }
 }

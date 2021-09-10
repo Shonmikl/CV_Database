@@ -7,9 +7,8 @@ import com.urise.webapp.model.Resume;
 import java.util.Comparator;
 
 public abstract class AbstractStorage implements Storage {
-    protected static final Comparator<Resume> NAME_COMPARATOR = Comparator.comparing(Resume::getFullName);
-    protected static final Comparator<Resume> UUID_COMPARATOR = Comparator.comparing(Resume::getUuid);
-    protected static final Comparator<Resume> RESUME_COMPARATOR = UUID_COMPARATOR.thenComparing(NAME_COMPARATOR);
+    protected static final Comparator<Resume> COMPARATOR = Comparator.comparing(Resume::getUuid).thenComparing(Resume::getFullName);
+    protected static final Comparator<Resume> RESUME_COMPARATOR = Comparator.comparing(Resume::getUuid);
 
 
     protected abstract Object getKey(String uuid);
