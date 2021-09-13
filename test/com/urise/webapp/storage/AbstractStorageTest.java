@@ -41,7 +41,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     void updateNotExistResume() {
-        assertThrows(NotExistStorageException.class, () -> storage.update(new Resume("TEST", "TEST")));
+        assertThrows(NotExistStorageException.class, () -> storage.update(new Resume("TEST_UUID", "TEST_NAME")));
     }
 
     @Test
@@ -53,14 +53,14 @@ public abstract class AbstractStorageTest {
 
     @Test
     void saveExistResume() {
-        assertThrows(ExistStorageException.class, () -> storage.save(new Resume(ID_1, "name1")));
+        assertThrows(ExistStorageException.class, () -> storage.save(resume1));
     }
 
     @Test
     void save() {
-        Resume test = new Resume("newUuid", "testName" );
+        Resume test = new Resume("TEST_UUID", "TEST_NAME" );
         storage.save(test);
-        assertEquals(test, storage.get("newUuid"));
+        assertEquals(test, storage.get("TEST_UUID"));
     }
 
     @Test

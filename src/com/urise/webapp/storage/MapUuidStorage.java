@@ -16,7 +16,7 @@ class MapUuidStorage extends AbstractStorage {
     }
 
     @Override
-    public void updateElement(Resume r, Object key) {
+    public void updateResume(Resume r, Object key) {
         mapStorage.put((String) key, r);
     }
 
@@ -26,7 +26,7 @@ class MapUuidStorage extends AbstractStorage {
     }
 
     @Override
-    public void saveElement(Resume r, Object key) {
+    public void saveResume(Resume r, Object key) {
         mapStorage.putIfAbsent((String) key, r);
     }
 
@@ -36,7 +36,7 @@ class MapUuidStorage extends AbstractStorage {
     }
 
     @Override
-    public void deleteElement(Object key) {
+    public void deleteResume(Object key) {
         mapStorage.remove(key);
     }
 

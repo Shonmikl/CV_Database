@@ -4,37 +4,34 @@ import com.urise.webapp.exeption.ExistStorageException;
 import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
 
-import java.util.Comparator;
-
 public abstract class AbstractStorage implements Storage {
-    protected static final Comparator<Resume> RESUME_COMPARATOR = Comparator.comparing(Resume::getFullName).thenComparing(Resume::getUuid);
 
 
     protected abstract Object getKey(String uuid);
 
-    protected abstract void updateElement(Resume r, Object key);
+    protected abstract void updateResume(Resume r, Object key);
 
     protected abstract boolean isKeyExist(Object key);
 
-    protected abstract void saveElement(Resume r, Object key);
+    protected abstract void saveResume(Resume r, Object key);
 
     protected abstract Resume getElement(Object key);
 
-    protected abstract void deleteElement(Object key);
+    protected abstract void deleteResume(Object key);
 
     public void update(Resume r) {
         Object key = getExistedKey(r.getUuid());
-        updateElement(r, key);
+        updateResume(r, key);
     }
 
     public void save(Resume r) {
         Object key = getNotExistedKey(r.getUuid());
-        saveElement(r, key);
+        saveResume(r, key);
     }
 
     public void delete(String uuid) {
         Object key = getExistedKey(uuid);
-        deleteElement(key);
+        deleteResume(key);
     }
 
     public Resume get(String uuid) {

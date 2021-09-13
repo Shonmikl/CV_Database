@@ -27,12 +27,12 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    protected void updateElement(Resume r, Object key) {
+    protected void updateResume(Resume r, Object key) {
         storage[(int) key] = r;
     }
 
     @Override
-    protected void saveElement(Resume r, Object key) {
+    protected void saveResume(Resume r, Object key) {
         if (size >= STORAGE_LIMIT ) {
             throw new StorageException("Overflow", r.getUuid());
         }
@@ -41,7 +41,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    protected void deleteElement(Object key) {
+    protected void deleteResume(Object key) {
         moveArray((int) key);
         storage[size - 1] = null;
         size--;

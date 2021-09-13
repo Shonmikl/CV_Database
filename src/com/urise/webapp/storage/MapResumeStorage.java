@@ -6,6 +6,7 @@ import java.util.*;
 
 public class MapResumeStorage extends AbstractStorage {
     private final Map<String, Resume> hashMapStorage = new HashMap<>();
+    protected static final Comparator<Resume> COMPARATOR = Comparator.comparing(Resume::getFullName).thenComparing(Resume:: getUuid);
 
     @Override
     protected Object getKey(String uuid) {
@@ -14,7 +15,7 @@ public class MapResumeStorage extends AbstractStorage {
     }
 
     @Override
-    public void updateElement(Resume r, Object key) {
+    public void updateResume(Resume r, Object key) {
         hashMapStorage.put(r.getUuid(), r);
     }
 
@@ -24,7 +25,7 @@ public class MapResumeStorage extends AbstractStorage {
     }
 
     @Override
-    public void saveElement(Resume r, Object key) {
+    public void saveResume(Resume r, Object key) {
         hashMapStorage.put(r.getUuid(), r);
     }
 
@@ -34,7 +35,7 @@ public class MapResumeStorage extends AbstractStorage {
     }
 
     @Override
-    public void deleteElement(Object key) {
+    public void deleteResume(Object key) {
         hashMapStorage.remove(key);
     }
 

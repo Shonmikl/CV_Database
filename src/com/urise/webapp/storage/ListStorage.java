@@ -24,12 +24,12 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected void updateElement(Resume r, Object key) {
+    protected void updateResume(Resume r, Object key) {
         listStorage.set((int) key, r);
     }
 
     @Override
-    protected void saveElement(Resume r, Object key) {
+    protected void saveResume(Resume r, Object key) {
         listStorage.add(r);
     }
 
@@ -44,7 +44,7 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected void deleteElement(Object key) {
+    protected void deleteResume(Object key) {
         listStorage.remove(getElement(key));
     }
 
