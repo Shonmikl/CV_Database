@@ -2,8 +2,7 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class ListStorage extends AbstractStorage {
     private final List<Resume> listStorage = new LinkedList<>();
@@ -50,7 +49,8 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public List<Resume> getAllSorted() {
-        return listStorage;
+        Collections.sort(listStorage);
+        return new ArrayList<>(listStorage);
     }
 
     @Override

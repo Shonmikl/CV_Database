@@ -6,7 +6,6 @@ import com.urise.webapp.model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
-
     protected abstract Object getKey(String uuid);
 
     protected abstract void updateResume(Resume r, Object key);

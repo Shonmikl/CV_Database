@@ -1,7 +1,5 @@
 package com.urise.webapp.model;
 
-import java.util.UUID;
-
 public class Resume implements Comparable<Resume> {
 
     // Unique identifier
@@ -13,20 +11,8 @@ public class Resume implements Comparable<Resume> {
         this.fullName = fullName;
     }
 
-    public Resume() {
-        this(UUID.randomUUID().toString());
-    }
-
-    public Resume(String fullName) {
-        this(UUID.randomUUID().toString(), fullName);
-    }
-
     public String getUuid() {
         return uuid;
-    }
-
-    public String getFullName() {
-        return fullName;
     }
 
     public void setUuid(String uuid) {

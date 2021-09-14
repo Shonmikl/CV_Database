@@ -6,7 +6,6 @@ import java.util.*;
 
 public class MapResumeStorage extends AbstractStorage {
     private final Map<String, Resume> hashMapStorage = new HashMap<>();
-    protected static final Comparator<Resume> COMPARATOR = Comparator.comparing(Resume::getFullName).thenComparing(Resume:: getUuid);
 
     @Override
     protected Object getKey(String uuid) {
