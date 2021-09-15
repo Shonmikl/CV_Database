@@ -45,7 +45,8 @@ public class MapResumeStorage extends AbstractStorage {
 
     @Override
     public List<Resume> getAllSorted() {
-        return new ArrayList<>(hashMapStorage.values());
+        Map<String, Resume> map = new TreeMap<>(hashMapStorage);
+        return new ArrayList<>(map.values());
     }
 
     @Override
