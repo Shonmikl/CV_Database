@@ -35,7 +35,7 @@ public class MapResumeStorage extends AbstractStorage {
 
     @Override
     public void deleteResume(Object key) {
-        storageMap.remove(key);
+        storageMap.remove(((Resume) key).getUuid());
     }
 
     @Override
