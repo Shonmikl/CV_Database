@@ -38,9 +38,8 @@ class MapUuidStorage extends AbstractStorage {
     }
 
     @Override
-    public List<Resume> getAllSorted() {
-        Map<String, Resume> map1 = new TreeMap<>(mapStorage);
-        return new ArrayList<>(map1.values());
+    public List<Resume> sort() {
+        return  new ArrayList<>(mapStorage.values());
     }
 
     @Override
