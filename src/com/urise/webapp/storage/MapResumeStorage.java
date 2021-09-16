@@ -5,51 +5,51 @@ import com.urise.webapp.model.Resume;
 import java.util.*;
 
 public class MapResumeStorage extends AbstractStorage {
-    private final Map<String, Resume> hashMapStorage = new HashMap<>();
+    private final Map<String, Resume> storageMap = new HashMap<>();
 
     @Override
     protected Object getKey(String uuid) {
         //return hashMapStorage.get(uuid);
-        return uuid;
+        return storageMap.get(uuid);
     }
 
     @Override
     public void updateResume(Resume r, Object key) {
-        hashMapStorage.put(r.getUuid(), r);
+        storageMap.put(r.getUuid(), r);
     }
 
     @Override
     public boolean isKeyExist(Object key) {
-        return hashMapStorage.containsKey(key);
+        return key != null;
     }
 
     @Override
     public void saveResume(Resume r, Object key) {
-        hashMapStorage.put(r.getUuid(), r);
+        storageMap.put(r.getUuid(), r);
     }
 
     @Override
     public Resume getElement(Object key) {
-        return hashMapStorage.get(key);
+        return (Resume) key;
     }
 
     @Override
     public void deleteResume(Object key) {
-        hashMapStorage.remove(key);
+        storageMap.remove(key);
     }
 
     @Override
     public void clear() {
-        hashMapStorage.clear();
+        storageMap.clear();
     }
 
     @Override
-    public List<Resume> sort() {
-        return new ArrayList<>(hashMapStorage.values());
+    public List<Resume> getStorageAsList() {
+        return new ArrayList<>(storageMap.values());
     }
 
     @Override
     public int size() {
-        return hashMapStorage.size();
+        return storageMap.size();
     }
 }

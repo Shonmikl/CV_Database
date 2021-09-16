@@ -21,7 +21,7 @@ public abstract class AbstractStorage implements Storage {
 
     protected abstract void deleteResume(Object key);
 
-    protected abstract List<Resume> sort();
+    protected abstract List<Resume> getStorageAsList();
 
     public void update(Resume r) {
         Object key = getExistedKey(r.getUuid());
@@ -60,7 +60,7 @@ public abstract class AbstractStorage implements Storage {
     }
 
     public List<Resume> getAllSorted() {
-        List<Resume> list = sort();
+        List<Resume> list = getStorageAsList();
         Collections.sort(list);
         return list;
     }
