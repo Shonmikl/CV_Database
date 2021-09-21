@@ -4,7 +4,7 @@ import com.urise.webapp.model.Resume;
 
 import java.util.*;
 
-public class ListStorage extends AbstractStorage {
+public class ListStorage extends AbstractStorage<Integer> {
     private final List<Resume> listStorage = new LinkedList<>();
 
     @Override
@@ -18,17 +18,17 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected boolean isKeyExist(Object key) {
+    protected boolean isKeyExist(Integer key) {
         return key != null;
     }
 
     @Override
-    protected void updateResume(Resume r, Object key) {
-        listStorage.set((int) key, r);
+    protected void updateResume(Resume r, Integer key) {
+        listStorage.set(key, r);
     }
 
     @Override
-    protected void saveResume(Resume r, Object key) {
+    protected void saveResume(Resume r, Integer key) {
         listStorage.add(r);
     }
 
@@ -38,12 +38,12 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected Resume getElement(Object key) {
-        return listStorage.get((int) key);
+    protected Resume getElement(Integer key) {
+        return listStorage.get(key);
     }
 
     @Override
-    protected void deleteResume(Object key) {
+    protected void deleteResume(Integer key) {
         listStorage.remove(getElement(key));
     }
 
