@@ -1,6 +1,10 @@
 package com.urise.webapp.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Resume implements Comparable<Resume> {
+    Map<SectionType, String> resumeInfo = new HashMap<>();
 
     // Unique identifier
     private String uuid;
