@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Resume implements Comparable<Resume> {
-    Map<SectionType, String> resumeInfo = new HashMap<>();
-
+    Map<ContactType, String> contacts;
+    Map<SectionType, Section> sections;
     // Unique identifier
     private String uuid;
     private final String fullName;
