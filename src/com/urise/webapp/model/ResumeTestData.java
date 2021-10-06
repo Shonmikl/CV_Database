@@ -22,10 +22,10 @@ public class ResumeTestData {
         sections.put(SectionType.OBJECTIVE, sectionPosition);
 
         Section sectionPersonality = new Section();
-        sectionPersonality.setSectionContent("Communication skills, ability to achieve goals, " +
-                "team management experience, project management" +
-                "experience, broad outlook, market knowledge B2B, FMCG" +
-                "ability to build relationships at all levels.");
+        sectionPersonality.setSectionContent("- Communication skills, ability to achieve goals, " +
+                "- team management experience, project management" +
+                "- experience, broad outlook, market knowledge B2B, FMCG" +
+                "- ability to build relationships at all levels.");
         sections.put(SectionType.PERSONAL, sectionPersonality);
 
         Section sectionAchievement = new Section();
