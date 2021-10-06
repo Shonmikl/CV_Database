@@ -3,8 +3,16 @@ package com.urise.webapp.model;
 import java.util.Map;
 
 public class Resume implements Comparable<Resume> {
-    Map<ContactType, String> contacts;
-    Map<SectionType, Section> sections;
+    private Map<ContactType, String> contacts;
+    private Map<SectionType, Section> sections;
+
+    public void setContacts(Map<ContactType, String> contacts) {
+        this.contacts = contacts;
+    }
+
+    public void setSections(Map<SectionType, Section> sections) {
+        this.sections = sections;
+    }
 
     // Unique identifier
     private String uuid;

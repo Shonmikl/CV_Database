@@ -4,8 +4,7 @@ public enum ContactType {
 
     PHONE_NUMBER("PHONE_NUMBER"),
     MAIL("E-MAIL"),
-    SOCIAL_NETWORKS("SOCIAL_NETWORKS"),
-    ;
+    SOCIAL_NETWORKS("SOCIAL_NETWORKS"),;
 
     String title;
 
