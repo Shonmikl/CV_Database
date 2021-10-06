@@ -68,7 +68,6 @@ public class ResumeTestData {
         organization.setStartDate(softlineStartDate);
         organization.setEndDate(softlineEndDate);
 
-        System.out.println(organization.toString());
 
 
 
