@@ -1,50 +1,47 @@
 package com.urise.webapp.model;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.Collection;
+import java.util.Objects;
 
 public class Organization {
-     Collection<Period> periods;
 
-     private LocalDate startDate;
-     private LocalDate endDate;
+     private final Link homePage;
 
-     private String title;
-     private String description;
-     private String positionName;
+     protected final LocalDate startDate;
+     protected final LocalDate endDate;
+     private final String description;
+     private final String title;
 
-     public void setPositionName(String positionName) {
-          this.positionName = positionName;
-     }
-
-     public Organization(){}
-
-     public Organization(Collection<Period> periods, LocalDate startDate, LocalDate endDate, String title, String description) {
-          this.periods = periods;
+     public Organization(String name, String url, LocalDate startDate, LocalDate endDate, String title, String description) {
+          this.homePage = new Link(name, url);
           this.startDate = startDate;
           this.endDate = endDate;
           this.title = title;
           this.description = description;
      }
 
-     public void setPeriods(Collection<Period> periods) {
-          this.periods = periods;
+     @Override
+     public boolean equals(Object o) {
+          if (this == o) return true;
+          if (o == null || getClass() != o.getClass()) return false;
+          Organization that = (Organization) o;
+          return homePage.equals(that.homePage) && startDate.equals(that.startDate) && endDate.equals(that.endDate) && description.equals(that.description) && title.equals(that.title);
      }
 
-     public void setStartDate(LocalDate startDate) {
-          this.startDate = startDate;
+     @Override
+     public int hashCode() {
+          return Objects.hash(homePage, startDate, endDate, description, title);
      }
 
-     public void setEndDate(LocalDate endDate) {
-          this.endDate = endDate;
-     }
-
-     public void setTitle(String title) {
-          this.title = title;
-     }
-
-     public void setDescription(String description) {
-          this.description = description;
+     @Override
+     public String toString() {
+          return "Organization{" +
+                  "homePage=" + homePage +
+                  ", startDate=" + startDate +
+                  ", endDate=" + endDate +
+                  ", description='" + description + '\'' +
+                  ", title='" + title + '\'' +
+                  '}';
      }
 }
+
