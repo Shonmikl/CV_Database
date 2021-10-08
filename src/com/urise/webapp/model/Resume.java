@@ -9,6 +9,11 @@ public class Resume implements Comparable<Resume> {
 
     // Unique identifier
     private String uuid;
+
+    public String getFullName() {
+        return fullName;
+    }
+
     private final String fullName;
 
     public void setContacts(Map<ContactType, String> contacts) {
@@ -32,12 +37,6 @@ public class Resume implements Comparable<Resume> {
         this.fullName = fullName;
     }
 
-    public Resume(Map<ContactType, String> contacts, Map<SectionType, Section> sections, String uuid, String fullName) {
-        this.contacts = contacts;
-        this.sections = sections;
-        this.uuid = uuid;
-        this.fullName = fullName;
-    }
 
     public String getUuid() {
         return uuid;
