@@ -1,18 +1,19 @@
 package com.urise.webapp.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class OrganizationSection extends Section{
     private List<Organization> organizations;
 
-    public OrganizationSection(List<Organization> organizations) {
-        this.organizations = organizations;
+    public OrganizationSection(Organization organizations) {
+        this.organizations = Arrays.asList(organizations);
     }
 
-    public List<Organization> getOrganizations() {
-        return organizations;
-    }
+//    public List<Organization> getOrganizations() {
+//        return organizations;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -30,8 +31,8 @@ public class OrganizationSection extends Section{
     @Override
     public String
     toString() {
-        return "OrganizationSection{" +
-                "organizations=" + organizations +
-                '}';
+        return "OrganizationSection:   " + '\n'
+                 + organizations +
+                "\n";
     }
 }

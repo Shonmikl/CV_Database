@@ -9,9 +9,9 @@ public class TextSection extends Section{
         this.content = content;
     }
 
-    public String getContent() {
-        return content;
-    }
+//    public String getContent() {
+//        return content;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -28,8 +28,6 @@ public class TextSection extends Section{
 
     @Override
     public String toString() {
-        return "TextSection{" +
-                "content='" + content + '\'' +
-                '}';
+        return  "TextSection--->   " + '\n' + content ;
     }
 }

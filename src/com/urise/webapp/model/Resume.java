@@ -37,7 +37,6 @@ public class Resume implements Comparable<Resume> {
         this.fullName = fullName;
     }
 
-
     public String getUuid() {
         return uuid;
     }

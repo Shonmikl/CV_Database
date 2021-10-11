@@ -35,13 +35,12 @@ public class Organization {
 
      @Override
      public String toString() {
-          return "Organization{" +
-                  "homePage=" + homePage +
-                  ", startDate=" + startDate +
-                  ", endDate=" + endDate +
-                  ", description='" + description + '\'' +
-                  ", title='" + title + '\'' +
-                  '}';
+          return "Organization:\n" +
+                  "homePage--->  " + homePage + "\n" +
+                  "startDate--->  " + startDate + "\n" +
+                  "endDate--->  " + endDate + "\n" +
+                  "description--->  " + description + "\n" +
+                  "title--->  " + title + "\n" ;
      }
 }
 
