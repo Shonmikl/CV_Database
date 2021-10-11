@@ -29,9 +29,8 @@ public class OrganizationSection extends Section{
     }
 
     @Override
-    public String
-    toString() {
-        return "OrganizationSection:   " + '\n'
+    public String toString() {
+        return "OrganizationSection:" + '\n'
                  + organizations +
                 "\n";
     }

@@ -40,7 +40,7 @@ public class Organization {
                   "startDate--->  " + startDate + "\n" +
                   "endDate--->  " + endDate + "\n" +
                   "description--->  " + description + "\n" +
-                  "title--->  " + title + "\n" ;
+                  "title--->  " + title;
      }
 }
 
