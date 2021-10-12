@@ -2,39 +2,27 @@ package com.urise.webapp.model;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Resume implements Comparable<Resume> {
     private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
-    private Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
-
-    // Unique identifier
+    private Map<SectionType, AbstractSection> sections = new EnumMap<>(SectionType.class);
     private String uuid;
+    private final String fullName;
 
-    public String getFullName() {
-        return fullName;
+    public Resume(String uuid, String fullName) {
+        this.uuid = uuid;
+        this.fullName = fullName;
     }
 
-    private final String fullName;
+    public String getFullName() { return fullName; }
 
     public void setContacts(Map<ContactType, String> contacts) {
         this.contacts = contacts;
     }
 
-    public void setSections(Map<SectionType, Section> sections) {
+    public void setSections(Map<SectionType, AbstractSection> sections) {
         this.sections = sections;
-    }
-
-    public String getContacts(ContactType contactType) {
-        return contacts.get(contactType);
-    }
-
-    public Section getSections(SectionType sectionType) {
-        return sections.get(sectionType);
-    }
-
-    public Resume(String uuid, String fullName) {
-        this.uuid = uuid;
-        this.fullName = fullName;
     }
 
     public String getUuid() {
@@ -49,14 +37,13 @@ public class Resume implements Comparable<Resume> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Resume resume = (Resume) o;
-        return uuid.equals(resume.uuid);
+        return contacts.equals(resume.contacts) && sections.equals(resume.sections) && uuid.equals(resume.uuid) && fullName.equals(resume.fullName);
     }
 
     @Override
     public int hashCode() {
-        return uuid.hashCode();
+        return Objects.hash(contacts, sections, uuid, fullName);
     }
 
     @Override
