@@ -29,8 +29,6 @@ public class OrganizationSection extends AbstractSection {
 
     @Override
     public String toString() {
-        return "OrganizationSection:" + '\n'
-                 + organizations +
-                "\n";
+        return "* " +  organizations + "\n";
     }
 }

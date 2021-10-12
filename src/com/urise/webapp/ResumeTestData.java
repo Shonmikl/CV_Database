@@ -8,15 +8,14 @@ import java.util.*;
 public class ResumeTestData {
     public static void main(String[] args) {
         Resume resume = new Resume("0001", "Mikhail Egorov");
-
         Map<ContactType, String> resumeContactTypeMap = new EnumMap<>(ContactType.class);
+        Map<SectionType, AbstractSection> resumeSectionTypeMap = new EnumMap<>(SectionType.class);
+
         resumeContactTypeMap.put(ContactType.MAIL, "mikhailegorov676@gmail.com");
         resumeContactTypeMap.put(ContactType.PHONE_NUMBER, "+79119028180");
         resumeContactTypeMap.put(ContactType.SOCIAL_NETWORKS, "https://www.facebook.com/mikhail.egorov.7");
 
         resume.setContacts(resumeContactTypeMap);
-
-        Map<SectionType, AbstractSection> resumeSectionTypeMap = new EnumMap<>(SectionType.class);
 
         AbstractSection positionAbstractSection = new TextSection("JAVA JUNIOR");
         resumeSectionTypeMap.put(SectionType.OBJECTIVE, positionAbstractSection);

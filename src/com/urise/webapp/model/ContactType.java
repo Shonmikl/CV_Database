@@ -13,10 +13,6 @@ public enum ContactType {
     }
 
     public String getTitle() {
-        return "Contact type--->  "+ '\n' + title;
+        return title;
     }
-
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
 }

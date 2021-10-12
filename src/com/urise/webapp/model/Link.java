@@ -26,7 +26,7 @@ public class Link {
 
     @Override
     public String toString() {
-        return  "Name: " + name + '\'' +
-                ", URL: " + URL + '\'';
+        return  name + '\n' +
+                URL + '\n';
     }
 }
