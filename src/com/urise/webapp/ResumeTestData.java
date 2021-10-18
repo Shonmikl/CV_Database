@@ -3,9 +3,11 @@ package com.urise.webapp;
 import com.urise.webapp.model.*;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.EnumMap;
+import java.util.Map;
 
 public class ResumeTestData {
+
     public static void main(String[] args) {
         Resume resume = new Resume("0001", "Mikhail Egorov");
         Map<ContactType, String> resumeContactTypeMap = new EnumMap<>(ContactType.class);
@@ -45,7 +47,7 @@ public class ResumeTestData {
 
         LocalDate slStartDate = LocalDate.of(2017, 7,15);
         LocalDate slEndDate = LocalDate.of(2020, 10,1);
-        Organization softLineCompany = new Organization("Softline LLC  ( Clobal IT Integrator )",
+        Organization softLineCompany = new Organization("Softline LLC  ( Global IT Integrator )",
                 "https://softline.com", slStartDate, slEndDate, "Enterprise Account Manager",
                 """
                         * Work with a valid account sheet. (LENTA, SRV DEVELOPMENT, ACCOUNTOR RUSSIA, TIKKURILA, HOFFMAN GROUP, JOTUN PAINTS, etc.)
@@ -72,9 +74,6 @@ public class ResumeTestData {
                         * Strict adherence to company values
                         * Work within the framework of a clear methodology.
                         """);
-        List<Organization> organizationList = new ArrayList<>();
-
-        organizationList.add(softLineCompany);
         AbstractSection softLineAbstractSection = new OrganizationSection(softLineCompany);
         resumeSectionTypeMap.put(SectionType.EXPERIENCE, softLineAbstractSection);
 
@@ -82,8 +81,7 @@ public class ResumeTestData {
         LocalDate universityEndDate = LocalDate.of(2008, 7, 11);
         Organization university = new Organization("St. Petersburg University of Management and Economics", "https://www.spbume.ru/ru/",
                 universityStartDate, universityEndDate, "Management, Crisis management", "");
-
-        organizationList.add(university);
+        
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);
         resume.setSections(resumeSectionTypeMap);
@@ -98,5 +96,10 @@ public class ResumeTestData {
             System.out.println(map1.getValue());
             System.out.println("*******************************************");
         }
+
     }
+
+
+
+
 }

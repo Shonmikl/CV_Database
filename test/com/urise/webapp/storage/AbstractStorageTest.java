@@ -49,7 +49,7 @@ public abstract class AbstractStorageTest {
     void update() {
         Resume resume4 = new Resume(ID_1, "TEST");
         storage.update(resume1);
-        assertEquals(resume4, storage.get(ID_1));
+        assertEquals(resume4.getFullName(), "TEST");
     }
 
     @Test
