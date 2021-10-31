@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Organization {
-
      private final Link homePage;
 
      protected final LocalDate startDate;
      protected final LocalDate endDate;
+
      private final String description;
      private final String title;
 
@@ -36,10 +36,9 @@ public class Organization {
      @Override
      public String toString() {
           return "* " +  homePage + "\n" +
-                 "* " +  startDate + "\n" +
-                 "* " +  endDate + "\n" +
-                         description + "\n" +
-                         title;
+                  "* " +  startDate + "\n" +
+                  "* " +  endDate + "\n" +
+                  description + "\n" +
+                  title;
      }
 }
-

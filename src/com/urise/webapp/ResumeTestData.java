@@ -1,7 +1,6 @@
 package com.urise.webapp;
 
 import com.urise.webapp.model.*;
-
 import java.time.LocalDate;
 import java.util.EnumMap;
 import java.util.Map;
@@ -81,7 +80,7 @@ public class ResumeTestData {
         LocalDate universityEndDate = LocalDate.of(2008, 7, 11);
         Organization university = new Organization("St. Petersburg University of Management and Economics", "https://www.spbume.ru/ru/",
                 universityStartDate, universityEndDate, "Management, Crisis management", "");
-        
+
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);
         resume.setSections(resumeSectionTypeMap);
@@ -96,10 +95,5 @@ public class ResumeTestData {
             System.out.println(map1.getValue());
             System.out.println("*******************************************");
         }
-
     }
-
-
-
-
 }

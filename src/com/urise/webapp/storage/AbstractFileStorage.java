@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class AbstractFileStorage extends AbstractStorage<File>{
-    private final File directory;
+    private File directory;
 
     protected AbstractFileStorage(File directory) {
+
         Objects.requireNonNull(directory, "directory mustn't be null");
         if (!directory.isDirectory()) {
             throw  new IllegalArgumentException(directory.getAbsolutePath() + " isn't directory");
@@ -66,7 +67,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File>{
 
     @Override
     protected List<Resume> getStorageAsList() {
-        return null;
+        return (List<Resume>) directory;
     }
 
     @Override
