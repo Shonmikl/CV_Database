@@ -1,23 +1,12 @@
 package com.urise.webapp.model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class Organization {
      private final Link homePage;
 
-     protected final LocalDate startDate;
-     protected final LocalDate endDate;
-
-     private final String description;
-     private final String title;
-
-     public Organization(String name, String url, LocalDate startDate, LocalDate endDate, String title, String description) {
+     public Organization(String name, String url, AdditionalInformation... additionalInformation) {
           this.homePage = new Link(name, url);
-          this.startDate = startDate;
-          this.endDate = endDate;
-          this.title = title;
-          this.description = description;
      }
 
      @Override
@@ -25,20 +14,16 @@ public class Organization {
           if (this == o) return true;
           if (o == null || getClass() != o.getClass()) return false;
           Organization that = (Organization) o;
-          return homePage.equals(that.homePage) && startDate.equals(that.startDate) && endDate.equals(that.endDate) && description.equals(that.description) && title.equals(that.title);
+          return Objects.equals(homePage, that.homePage);
      }
 
      @Override
      public int hashCode() {
-          return Objects.hash(homePage, startDate, endDate, description, title);
+          return Objects.hash(homePage);
      }
 
      @Override
      public String toString() {
-          return "* " +  homePage + "\n" +
-                  "* " +  startDate + "\n" +
-                  "* " +  endDate + "\n" +
-                  description + "\n" +
-                  title;
+          return  "Organization ==> " + homePage;
      }
 }

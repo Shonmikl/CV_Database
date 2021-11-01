@@ -47,7 +47,7 @@ public class ResumeTestData {
         LocalDate slStartDate = LocalDate.of(2017, 7,15);
         LocalDate slEndDate = LocalDate.of(2020, 10,1);
         Organization softLineCompany = new Organization("Softline LLC  ( Global IT Integrator )",
-                "https://softline.com", slStartDate, slEndDate, "Enterprise Account Manager",
+                "https://softline.com", new AdditionalInformation(slStartDate, slEndDate, "Enterprise Account Manager",
                 """
                         * Work with a valid account sheet. (LENTA, SRV DEVELOPMENT, ACCOUNTOR RUSSIA, TIKKURILA, HOFFMAN GROUP, JOTUN PAINTS, etc.)
                         * Building trusting relationships with decision makers +
@@ -72,14 +72,15 @@ public class ResumeTestData {
                         * Reporting in CRM
                         * Strict adherence to company values
                         * Work within the framework of a clear methodology.
-                        """);
+                        """));
         AbstractSection softLineAbstractSection = new OrganizationSection(softLineCompany);
         resumeSectionTypeMap.put(SectionType.EXPERIENCE, softLineAbstractSection);
 
         LocalDate universityStartDate = LocalDate.of(2004, 9, 15);
         LocalDate universityEndDate = LocalDate.of(2008, 7, 11);
+        AdditionalInformation university_information_1 = new AdditionalInformation(universityStartDate, universityEndDate, "Management, Crisis management", "");
         Organization university = new Organization("St. Petersburg University of Management and Economics", "https://www.spbume.ru/ru/",
-                universityStartDate, universityEndDate, "Management, Crisis management", "");
+                university_information_1);
 
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);
