@@ -5,11 +5,17 @@ import com.urise.webapp.model.Resume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class AbstractFileStorage extends AbstractStorage<File>{
-    private File directory;
+public abstract class AbstractFileStorage extends AbstractStorage<File> {
+
+    private final File directory;
+
+    protected abstract void doWrite(Resume r, File file) throws IOException;
+
+    protected abstract Resume doRead(File file) throws IOException;
 
     protected AbstractFileStorage(File directory) {
 
@@ -22,6 +28,25 @@ public abstract class AbstractFileStorage extends AbstractStorage<File>{
             throw  new IllegalArgumentException(directory.getAbsolutePath() + " isn't readable or writable");
         }
         this.directory = directory;
+    }
+
+    @Override
+    public void clear() {
+        File[] files = directory.listFiles();
+        if(files != null) {
+            for (File file : files) {
+                deleteResume(file);
+            }
+        }
+    }
+
+    @Override
+    public int size() {
+        String[] list = directory.list();
+        if (list == null) {
+            throw new StorageException("Directory read error", null);
+        }
+        return list.length;
     }
 
     @Override
@@ -53,31 +78,32 @@ public abstract class AbstractFileStorage extends AbstractStorage<File>{
         }
     }
 
-    protected abstract void doWrite(Resume r, File file) throws IOException;
-
     @Override
     protected Resume getElement(File file) {
-        return get(file.getName());
+        try {
+            return doRead(file);
+        } catch (IOException e) {
+            throw new StorageException(file.getName(), "File can not been read");
+        }
     }
 
     @Override
     protected void deleteResume(File file) {
-        file.delete();
+        if(!file.delete()) {
+            throw new StorageException(file.getName(), "File was not deleted");
+        }
     }
 
     @Override
     protected List<Resume> getStorageAsList() {
-        return (List<Resume>) directory;
-    }
-
-    @Override
-    public void clear() {
-        directory.delete();
-
-    }
-
-    @Override
-    public int size() {
-        return (int) directory.length();
+        File[] files = directory.listFiles();
+        if (files == null) {
+            throw new StorageException("Directory can not been read", null);
+        }
+        List<Resume> list = new ArrayList<>(files.length);
+        for (File f : files) {
+            list.add(getElement(f));
+        }
+        return list;
     }
 }

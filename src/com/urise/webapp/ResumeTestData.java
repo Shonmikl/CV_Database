@@ -1,11 +1,16 @@
 package com.urise.webapp;
 
 import com.urise.webapp.model.*;
+
 import java.time.LocalDate;
 import java.util.EnumMap;
 import java.util.Map;
 
 public class ResumeTestData {
+
+    public Resume makeResume(String uuid, String fullName) {
+        return null;
+    }
 
     public static void main(String[] args) {
         Resume resume = new Resume("0001", "Mikhail Egorov");
@@ -46,8 +51,7 @@ public class ResumeTestData {
 
         LocalDate slStartDate = LocalDate.of(2017, 7,15);
         LocalDate slEndDate = LocalDate.of(2020, 10,1);
-        Organization softLineCompany = new Organization("Softline LLC  ( Global IT Integrator )",
-                "https://softline.com", new AdditionalInformation(slStartDate, slEndDate, "Enterprise Account Manager",
+        AdditionalInformation softLineAdditionalInformation = new AdditionalInformation(slStartDate, slEndDate, "Enterprise Account Manager",
                 """
                         * Work with a valid account sheet. (LENTA, SRV DEVELOPMENT, ACCOUNTOR RUSSIA, TIKKURILA, HOFFMAN GROUP, JOTUN PAINTS, etc.)
                         * Building trusting relationships with decision makers +
@@ -72,15 +76,23 @@ public class ResumeTestData {
                         * Reporting in CRM
                         * Strict adherence to company values
                         * Work within the framework of a clear methodology.
-                        """));
+                        """);
+        Organization softLineCompany = new Organization("Softline LLC  ( Global IT Integrator )","https://softline.com", softLineAdditionalInformation);
         AbstractSection softLineAbstractSection = new OrganizationSection(softLineCompany);
         resumeSectionTypeMap.put(SectionType.EXPERIENCE, softLineAbstractSection);
 
-        LocalDate universityStartDate = LocalDate.of(2004, 9, 15);
-        LocalDate universityEndDate = LocalDate.of(2008, 7, 11);
-        AdditionalInformation university_information_1 = new AdditionalInformation(universityStartDate, universityEndDate, "Management, Crisis management", "");
+        LocalDate universityStartDate1 = LocalDate.of(2004, 9, 15);
+        LocalDate universityEndDate1 = LocalDate.of(2008, 7, 11);
+        AdditionalInformation university_information_1 =
+                new AdditionalInformation(universityStartDate1, universityEndDate1, "Management, Crisis management", "");
+
+        LocalDate universityStartDate2 = LocalDate.of(2006, 3, 11);
+        LocalDate universityEndDate2 = LocalDate.of(2007, 4, 21);
+        AdditionalInformation university_information_2 =
+                new AdditionalInformation(universityStartDate2, universityEndDate2, "Test Additional Information", "Test Additional Information");
+
         Organization university = new Organization("St. Petersburg University of Management and Economics", "https://www.spbume.ru/ru/",
-                university_information_1);
+                university_information_1, university_information_2);
 
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);
@@ -93,7 +105,8 @@ public class ResumeTestData {
         }
         System.out.println("*******************************************");
         for (Map.Entry<SectionType, AbstractSection> map1: resumeSectionTypeMap.entrySet()) {
-            System.out.println(map1.getValue());
+            System.out.println(map1.toString());
+
             System.out.println("*******************************************");
         }
     }
