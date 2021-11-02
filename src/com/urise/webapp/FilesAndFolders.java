@@ -4,7 +4,7 @@ import java.io.File;
 public class FilesAndFolders {
 
     public static void main(String[] args) {
-       File path = new File("E:/TopJava/basejava");
+       File path = new File("E:/TopJava/basejava/.");
         displayFileName(path);
     }
 
