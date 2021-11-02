@@ -1,24 +1,26 @@
 package com.urise.webapp;
-
 import java.io.File;
 
 public class FilesAndFolders {
-    public static final File PATH = new File("E:/TopJava/basejava");
 
-    public static void displayAll(File path) {
+    public static void main(String[] args) {
+       File path = new File("E:/TopJava/basejava");
+        displayFileName(path);
+    }
 
-        if(path.isFile()) {
+    private static void displayFileName(File path) {
+        if (path.isFile()) {
             System.out.println(path.getName());
         } else {
             System.out.println(path.getName());
-            File files[] = path.listFiles();
-            for(File dirOrFile: files){
-                displayAll(dirOrFile);
+            if (path.listFiles() == null) {
+                System.out.println("File is not exist");
+            } else {
+                File files[] = path.listFiles();
+                for (File dirOrFile : files) {
+                    displayFileName(dirOrFile);
+                }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        displayAll(PATH);
     }
 }
