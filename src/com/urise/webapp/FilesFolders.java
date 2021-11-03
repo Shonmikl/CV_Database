@@ -1,10 +1,11 @@
 package com.urise.webapp;
+
 import java.io.File;
 
-public class FilesAndFolders {
+public class FilesFolders {
 
     public static void main(String[] args) {
-       File path = new File("E:/TopJava/basejava/.");
+        File path = new File("E:/TopJava/basejava/.");
         displayFileName(path);
     }
 

@@ -59,7 +59,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     void save() {
-        Resume test = new Resume("TEST_UUID", "TEST_NAME" );
+        Resume test = new Resume("TEST_UUID", "TEST_NAME");
         storage.save(test);
         assertEquals(test, storage.get("TEST_UUID"));
     }
@@ -72,7 +72,7 @@ public abstract class AbstractStorageTest {
     @Test
     void delete() {
         storage.delete(ID_1);
-         assertThrows(NotExistStorageException.class, ()-> storage.get(ID_1));
+        assertThrows(NotExistStorageException.class, () -> storage.get(ID_1));
     }
 
     @Test
