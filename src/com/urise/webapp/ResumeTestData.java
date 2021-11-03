@@ -39,14 +39,14 @@ public class ResumeTestData {
         AbstractSection qualificationAbstractSection = new TextSection(randomStringGenerator());
         resumeSectionTypeMap.put(SectionType.QUALIFICATIONS, qualificationAbstractSection);
 
-        LocalDate slStartDate = LocalDate.of(2017, 7,15);
-        LocalDate slEndDate = LocalDate.of(2020, 10,1);
+        LocalDate slStartDate = LocalDate.of(2017, 7, 15);
+        LocalDate slEndDate = LocalDate.of(2020, 10, 1);
         AdditionalInformation softLineAdditionalInformation = new AdditionalInformation(slStartDate, slEndDate, randomStringGenerator(),
                 randomStringGenerator());
         List<AdditionalInformation> softLineList = new ArrayList<>();
         softLineList.add(softLineAdditionalInformation);
 
-        Organization softLineCompany = new Organization(new Link(randomStringGenerator(),randomStringGenerator()),  softLineList);
+        Organization softLineCompany = new Organization(new Link(randomStringGenerator(), randomStringGenerator()), softLineList);
         AbstractSection softLineAbstractSection = new OrganizationSection(softLineCompany);
         resumeSectionTypeMap.put(SectionType.EXPERIENCE, softLineAbstractSection);
 
@@ -73,15 +73,15 @@ public class ResumeTestData {
 
         System.out.println(resume.getFullName());
         System.out.println("*******************************************");
-        for (Map.Entry<ContactType, String> map: resumeContactTypeMap.entrySet()) {
+        for (Map.Entry<ContactType, String> map : resumeContactTypeMap.entrySet()) {
             System.out.println(map.getValue());
         }
         System.out.println("*******************************************");
-        for (Map.Entry<SectionType, AbstractSection> map1: resumeSectionTypeMap.entrySet()) {
+        for (Map.Entry<SectionType, AbstractSection> map1 : resumeSectionTypeMap.entrySet()) {
             System.out.println(map1);
             System.out.println("*******************************************");
         }
-        return  resume;
+        return resume;
     }
 
     public static String randomStringGenerator() {
