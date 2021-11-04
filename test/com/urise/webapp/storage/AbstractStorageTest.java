@@ -1,5 +1,6 @@
 package com.urise.webapp.storage;
 
+import com.urise.webapp.ResumeTestData;
 import com.urise.webapp.exeption.ExistStorageException;
 import com.urise.webapp.exeption.NotExistStorageException;
 import com.urise.webapp.model.Resume;
@@ -12,14 +13,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractStorageTest {
     protected Storage storage;
+    protected ResumeTestData resumeTestData = new ResumeTestData();
 
-    private final static String ID_1 = "1";
-    private final static String ID_2 = "2";
-    private final static String ID_3 = "3";
+    protected final String ID_1 = ResumeTestData.createsRandomString();
+    protected final String ID_2 = ResumeTestData.createsRandomString();
+    protected final String ID_3 = ResumeTestData.createsRandomString();
 
-    protected Resume resume1 = new Resume(ID_1, "name1");
-    protected Resume resume2 = new Resume(ID_2, "name2");
-    protected Resume resume3 = new Resume(ID_3, "name3");
+    protected final String NAME_1 = ResumeTestData.createsRandomString();
+    protected final String NAME_2 = ResumeTestData.createsRandomString();
+    protected final String NAME_3 = ResumeTestData.createsRandomString();
+
+    protected Resume resume1 = resumeTestData.makesResume(ID_1, NAME_1);
+    protected Resume resume2 = resumeTestData.makesResume(ID_2, NAME_2);
+    protected Resume resume3 = resumeTestData.makesResume(ID_3, NAME_3);
+
 
     public AbstractStorageTest(Storage storage) {
         this.storage = storage;

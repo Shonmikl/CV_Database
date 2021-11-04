@@ -1,19 +1,18 @@
 package com.urise.webapp.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Organization {
     private final Link homePage;
-    List<AdditionalInformation> additionalInformationArrayList = new ArrayList<>();
+    private List<Experience> additionalInformationArrayList;
 
-    public Organization(String name, String url, AdditionalInformation... additionalInformationList) {
+    public Organization(String name, String url, Experience... additionalInformationList) {
         this(new Link(name, url), Arrays.asList(additionalInformationList));
     }
 
-    public Organization(Link homePage, List<AdditionalInformation> additionalInformationArrayList) {
+    public Organization(Link homePage, List<Experience> additionalInformationArrayList) {
         this.homePage = homePage;
         this.additionalInformationArrayList = additionalInformationArrayList;
     }
