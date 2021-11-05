@@ -8,9 +8,13 @@ import java.util.*;
 public class ResumeTestData {
 
     public static void main(String[] args) {
+//        ResumeTestData resumeTestData = new ResumeTestData();
+//        System.out.println(resumeTestData.receiveFilledResume(createsRandomString(), createsRandomString()));
+
+        System.out.println(createsRandomString());
     }
 
-    public Resume makesResume(String uuid, String name) {
+    public Resume receiveFilledResume(String uuid, String name) {
         Resume resume = new Resume(uuid, name);
         Map<ContactType, String> resumeContactTypeMap = new EnumMap<>(ContactType.class);
         Map<SectionType, AbstractSection> resumeSectionTypeMap = new EnumMap<>(SectionType.class);
@@ -79,9 +83,15 @@ public class ResumeTestData {
     }
 
     public static String createsRandomString() {
-        StringBuilder stringBuffer = new StringBuilder("QWERTYUIOPASDFGHJKLZXCVBNM");
+        String list = "Q1W2E3R4T5Y6U7I8O9P0A9S8D7F6G5H4J3K2L/*/1-Z=2(X((3))C*4&V^5%B$6N@!#0M";
+        char[] listChar = list.toCharArray();
+
         Random random = new Random();
-        int randomDigit = random.nextInt(25);
-        return stringBuffer.substring(randomDigit);
+
+        char[] randomElement = new char[9]; // _ _ _   _ _ _  _ _ _
+        for (int i = 0; i < 9; i++) {
+            randomElement[i] = listChar[random.nextInt(68)];
+        }
+        return String.valueOf(randomElement);
     }
 }
