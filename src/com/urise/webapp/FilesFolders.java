@@ -5,7 +5,8 @@ import java.io.File;
 public class FilesFolders {
 
     public static void main(String[] args) {
-        File path = new File("/TopJava/basejava/");
+                                     // ? //
+        File path = new File("./");
         displayFileName(path);
     }
 

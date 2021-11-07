@@ -8,11 +8,10 @@ import java.util.*;
 public class ResumeTestData {
 
     public static void main(String[] args) {
-        ResumeTestData resumeTestData = new ResumeTestData();
-        System.out.println(resumeTestData.receiveFilledResume(createsRandomString(), createsRandomString()));
+        System.out.println(receiveFilledResume(createsRandomString(), createsRandomString()));
     }
 
-    public Resume receiveFilledResume(String uuid, String name) {
+    public static Resume receiveFilledResume(String uuid, String name) {
         Resume resume = new Resume(uuid, name);
         Map<ContactType, String> resumeContactTypeMap = new EnumMap<>(ContactType.class);
         Map<SectionType, AbstractSection> resumeSectionTypeMap = new EnumMap<>(SectionType.class);

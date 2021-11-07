@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class Organization {
     private final Link homePage;
-    private final List<Experience> experienceArrayList;
+    private final List<Experience> list_of_experience;
 
     public Organization(String name, String url, Experience... additionalInformationList) {
         this(new Link(name, url), Arrays.asList(additionalInformationList));
     }
 
-    public Organization(Link homePage, List<Experience> experienceArrayList) {
+    public Organization(Link homePage, List<Experience> list_of_experience) {
         this.homePage = homePage;
-        this.experienceArrayList = experienceArrayList;
+        this.list_of_experience = list_of_experience;
     }
 
     @Override
@@ -22,19 +22,19 @@ public class Organization {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Organization that = (Organization) o;
-        return Objects.equals(homePage, that.homePage) && Objects.equals(experienceArrayList, that.experienceArrayList);
+        return Objects.equals(homePage, that.homePage) && Objects.equals(list_of_experience, that.list_of_experience);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(homePage, experienceArrayList);
+        return Objects.hash(homePage, list_of_experience);
     }
 
     @Override
     public String toString() {
         return "Organization{" +
                 "homePage=" + homePage +
-                ", additionalInformationArrayList=" + experienceArrayList +
+                ", additionalInformationArrayList=" + list_of_experience +
                 '}';
     }
 }
