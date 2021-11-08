@@ -80,13 +80,13 @@ public class ResumeTestData {
     }
 
     public static String createsRandomString() {
-        String list = "Q1W2E3R4T5Y6U7I8O9P0A9S8D7F6G5H4J3K2L/*/1-Z=2(X((3))C*4&V^5%B$6N@!#0M";
+        String list = "Q1W2E3R4T5Y6U7I8O9P0A9S8D7F6G5H4J3K2L0M";
         char[] listChar = list.toCharArray();
         Random random = new Random();
         char[] randomElement = new char[9];
 
         for (int i = 0; i < 9; i++) {
-            randomElement[i] = listChar[random.nextInt(68)];
+            randomElement[i] = listChar[random.nextInt(39)];
         }
         return String.valueOf(randomElement);
     }

@@ -14,13 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class AbstractStorageTest {
     protected Storage storage;
 
-    protected final String ID_1 = ResumeTestData.createsRandomString();
-    protected final String ID_2 = ResumeTestData.createsRandomString();
-    protected final String ID_3 = ResumeTestData.createsRandomString();
+    protected final String ID_1 = "001";
+    protected final String ID_2 = "002";
+    protected final String ID_3 = "003";
 
-    protected final String NAME_1 = ResumeTestData.createsRandomString();
-    protected final String NAME_2 = ResumeTestData.createsRandomString();
-    protected final String NAME_3 = ResumeTestData.createsRandomString();
+    protected final String NAME_1 = "NAME_1";
+    protected final String NAME_2 = "NAME_2";
+    protected final String NAME_3 = "NAME_3";
 
     protected Resume resume1 = ResumeTestData.receiveFilledResume(ID_1, NAME_1);
     protected Resume resume2 = ResumeTestData.receiveFilledResume(ID_2, NAME_2);
@@ -33,10 +33,9 @@ public abstract class AbstractStorageTest {
     @BeforeEach
     void setUp() {
         storage.clear();
-        storage.save(resume3);
         storage.save(resume1);
         storage.save(resume2);
-
+        storage.save(resume3);
     }
 
     @Test
