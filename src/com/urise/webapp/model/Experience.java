@@ -3,20 +3,8 @@ package com.urise.webapp.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Experience {
-
-    protected final LocalDate startDate;
-    protected final LocalDate endDate;
-
-    protected final String description;
-    protected final String title;
-
-    public Experience(LocalDate startDate, LocalDate endDate, String description, String title) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.description = description;
-        this.title = title;
-    }
+public record Experience(LocalDate startDate, LocalDate endDate, String description,
+                         String title) {
 
     @Override
     public boolean equals(Object o) {

@@ -8,8 +8,8 @@ public class Organization {
     private final Link homePage;
     private final List<Experience> list_of_experience;
 
-    public Organization(String name, String url, Experience... additionalInformationList) {
-        this(new Link(name, url), Arrays.asList(additionalInformationList));
+    public Organization(String name, String url, Experience... list_of_experience) {
+        this(new Link(name, url), Arrays.asList(list_of_experience));
     }
 
     public Organization(Link homePage, List<Experience> list_of_experience) {
