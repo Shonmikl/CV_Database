@@ -26,7 +26,6 @@ public abstract class AbstractStorageTest {
     protected Resume resume2 = ResumeTestData.receiveFilledResume(ID_2, NAME_2);
     protected Resume resume3 = ResumeTestData.receiveFilledResume(ID_3, NAME_3);
 
-
     public AbstractStorageTest(Storage storage) {
         this.storage = storage;
     }
