@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractStorageTest {
     protected Storage storage;
-    protected ResumeTestData resumeTestData = new ResumeTestData();
 
     protected final String ID_1 = ResumeTestData.createsRandomString();
     protected final String ID_2 = ResumeTestData.createsRandomString();
@@ -23,9 +22,9 @@ public abstract class AbstractStorageTest {
     protected final String NAME_2 = ResumeTestData.createsRandomString();
     protected final String NAME_3 = ResumeTestData.createsRandomString();
 
-    protected Resume resume1 = resumeTestData.receiveFilledResume(ID_1, NAME_1);
-    protected Resume resume2 = resumeTestData.receiveFilledResume(ID_2, NAME_2);
-    protected Resume resume3 = resumeTestData.receiveFilledResume(ID_3, NAME_3);
+    protected Resume resume1 = ResumeTestData.receiveFilledResume(ID_1, NAME_1);
+    protected Resume resume2 = ResumeTestData.receiveFilledResume(ID_2, NAME_2);
+    protected Resume resume3 = ResumeTestData.receiveFilledResume(ID_3, NAME_3);
 
 
     public AbstractStorageTest(Storage storage) {
