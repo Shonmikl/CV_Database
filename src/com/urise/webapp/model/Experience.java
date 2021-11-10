@@ -1,10 +1,11 @@
 package com.urise.webapp.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public record Experience(LocalDate startDate, LocalDate endDate, String description,
-                         String title) {
+                         String title) implements Serializable {
 
     @Override
     public boolean equals(Object o) {

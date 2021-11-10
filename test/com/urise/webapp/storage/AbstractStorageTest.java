@@ -7,11 +7,14 @@ import com.urise.webapp.model.Resume;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class AbstractStorageTest {
+    protected final static File STORAGE_DIR = new File("D://VLC/plugins/stream_filter");
     protected Storage storage;
 
     protected final String ID_1 = "001";
