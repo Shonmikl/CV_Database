@@ -58,7 +58,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
         try {
             doWrite(r, new BufferedOutputStream(new FileOutputStream(file)));
         } catch (IOException e) {
-            throw new StorageException("IO error", r.getUuid(), e);
+            throw new StorageException("Path delete error", "IO error", e);
         }
     }
 
@@ -73,7 +73,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
             file.createNewFile();
             doWrite(r, new FileOutputStream(file));
         } catch (IOException e) {
-            throw new StorageException("IO error", file.getName(), e);
+            throw new StorageException("Path delete error", "IO error", e);
         }
     }
 

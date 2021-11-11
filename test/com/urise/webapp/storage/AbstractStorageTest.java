@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,7 +43,7 @@ public abstract class AbstractStorageTest {
     }
 
     @Test
-    void clear() {
+    void clear() throws IOException {
         storage.clear();
         assertEquals(0, storage.size());
     }
@@ -90,7 +91,7 @@ public abstract class AbstractStorageTest {
     }
 
     @Test
-    void size() {
+    void size() throws IOException {
         assertEquals(3, storage.size());
     }
 }

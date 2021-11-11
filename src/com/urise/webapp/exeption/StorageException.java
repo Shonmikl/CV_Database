@@ -1,17 +1,17 @@
 package com.urise.webapp.exeption;
 
-public class StorageException extends RuntimeException{
+public class StorageException extends RuntimeException {
 
-    private final String uuid;
+    private String uuid;
 
     public StorageException(String message, String uuid) {
         super(message);
         this.uuid = uuid;
     }
 
-    public StorageException(String message, String uuid, Exception e) {
+    public StorageException(String path_delete_error, String message, Exception e) {
         super(message, e);
-        this.uuid = uuid;
+
     }
 
     public String getUuid() {
