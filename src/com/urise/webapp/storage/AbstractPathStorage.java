@@ -45,10 +45,10 @@ public abstract class AbstractPathStorage extends AbstractStorage<Path> {
     }
 
 //    @Override
-//    protected File getKey(String uuid) {
-//        return new Path(directory.toFile(), uuid);
+//    protected Path getKey(String uuid) {
+//        return new Path(directory);
 //    }
-//
+
 //    @Override
 //    protected void updateResume(Resume r, Path path) {
 //        try {

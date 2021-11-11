@@ -5,7 +5,7 @@ import java.io.File;
 public class FilesFolders {
 
     public static void main(String[] args) {
-                                     // ? //
+        // ? //
         File path = new File("./");
         displayFileName(path);
     }
@@ -17,7 +17,7 @@ public class FilesFolders {
                 if (file.isFile()) {
                     System.out.println(file.getName());
                 } else if (file.isDirectory()) {
-                    System.out.println(file.getName());
+                    System.out.print(file);
                     displayFileName(file);
                 }
             }

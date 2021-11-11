@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class AbstractStorageTest {
-    protected final static File STORAGE_DIR = new File("D://VLC/plugins/stream_filter");
+    protected final static File STORAGE_DIR = new File("D://JavaFileTest");
     protected Storage storage;
 
     protected final String ID_1 = "001";
