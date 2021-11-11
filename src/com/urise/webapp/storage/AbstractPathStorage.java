@@ -3,6 +3,7 @@ package com.urise.webapp.storage;
 import com.urise.webapp.exeption.StorageException;
 import com.urise.webapp.model.Resume;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -46,17 +47,17 @@ public abstract class AbstractPathStorage extends AbstractStorage<Path> {
 
 //    @Override
 //    protected Path getKey(String uuid) {
-//        return new Path(directory);
+//        return ;
 //    }
 
-//    @Override
-//    protected void updateResume(Resume r, Path path) {
-//        try {
-//            doWrite(r, new BufferedOutputStream(new FileOutputStream(path)));
-//        } catch (IOException e) {
-//            throw new StorageException("Path write error", r.getUuid(), e);
-//        }
-//    }
+    @Override
+    protected void updateResume(Resume r, Path path) {
+        try {
+            doWrite(r, new FileOutputStream(String.valueOf(path)));
+        } catch (IOException e) {
+            throw new StorageException("Path write error", r.getUuid(), e);
+        }
+    }
 //
 //    @Override
 //    protected boolean isKeyExist(Path path) {
@@ -66,9 +67,9 @@ public abstract class AbstractPathStorage extends AbstractStorage<Path> {
 //    @Override
 //    protected void saveResume(Resume r, Path path) {
 //        try {
-//            path.createNewPath();
+////            path.;
 //        } catch (IOException e) {
-//            throw new StorageException("Couldn't create Path " + path.toAbsolutePath(), path.getFileName(), e);
+//            throw new StorageException("Couldn't create Path " + path.toAbsolutePath(), );
 //        }
 //        updateResume(r, path);
 //    }
