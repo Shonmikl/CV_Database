@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class FileStorage extends AbstractStorage<File> {
-    private SerializeAble serializeAble;
+    private final SerializeAble serializeAble;
     private final File directory;
 
     protected FileStorage(File directory, SerializeAble serializeAble) {
