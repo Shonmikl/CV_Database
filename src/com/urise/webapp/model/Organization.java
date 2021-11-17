@@ -11,15 +11,15 @@ public class Organization implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private final Link homePage;
-    private final List<Experience> list_of_experience;
+    private final List<Experience> experienceList;
 
-    public Organization(String name, String url, Experience... list_of_experience) {
-        this(new Link(name, url), Arrays.asList(list_of_experience));
+    public Organization(String name, String url, Experience... experienceList) {
+        this(new Link(name, url), Arrays.asList(experienceList));
     }
 
-    public Organization(Link homePage, List<Experience> list_of_experience) {
+    public Organization(Link homePage, List<Experience> experienceList) {
         this.homePage = homePage;
-        this.list_of_experience = list_of_experience;
+        this.experienceList = experienceList;
     }
 
     @Override
@@ -27,19 +27,19 @@ public class Organization implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Organization that = (Organization) o;
-        return Objects.equals(homePage, that.homePage) && Objects.equals(list_of_experience, that.list_of_experience);
+        return Objects.equals(homePage, that.homePage) && Objects.equals(experienceList, that.experienceList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(homePage, list_of_experience);
+        return Objects.hash(homePage, experienceList);
     }
 
     @Override
     public String toString() {
         return "Organization{" +
                 "homePage=" + homePage +
-                ", additionalInformationArrayList=" + list_of_experience +
+                ", additionalInformationArrayList=" + experienceList +
                 '}';
     }
 }

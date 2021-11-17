@@ -36,31 +36,31 @@ public class ResumeTestData {
 
         LocalDate slStartDate = LocalDate.of(2017, 7, 15);
         LocalDate slEndDate = LocalDate.of(2020, 10, 1);
-        Experience softLineAdditionalInformation = new Experience(slStartDate, slEndDate, createsRandomString(),
-                createsRandomString());
+
         List<Experience> softLineList = new ArrayList<>();
-        softLineList.add(softLineAdditionalInformation);
 
         Organization softLineCompany = new Organization(new Link(createsRandomString(), createsRandomString()), softLineList);
+        Experience softLineAdditionalInformation = new Experience(softLineCompany, slStartDate, slEndDate, createsRandomString(),
+                createsRandomString());
+        softLineList.add(softLineAdditionalInformation);
         AbstractSection softLineAbstractSection = new OrganizationSection(softLineCompany);
         resumeSectionTypeMap.put(SectionType.EXPERIENCE, softLineAbstractSection);
-
+        List<Experience> universityList = new ArrayList<>();
+        Organization university = new Organization(new Link(createsRandomString(), createsRandomString()),
+                universityList);
         LocalDate universityStartDate1 = LocalDate.of(2004, 9, 15);
         LocalDate universityEndDate1 = LocalDate.of(2008, 7, 11);
+
         Experience university_information_1 =
-                new Experience(universityStartDate1, universityEndDate1, createsRandomString(), createsRandomString());
+                new Experience(university, universityStartDate1, universityEndDate1, createsRandomString(), createsRandomString());
 
         LocalDate universityStartDate2 = LocalDate.of(2006, 3, 11);
         LocalDate universityEndDate2 = LocalDate.of(2007, 4, 21);
         Experience university_information_2 =
-                new Experience(universityStartDate2, universityEndDate2, createsRandomString(), createsRandomString());
+                new Experience(university, universityStartDate2, universityEndDate2, createsRandomString(), createsRandomString());
 
-        List<Experience> universityList = new ArrayList<>();
         universityList.add(university_information_1);
         universityList.add(university_information_2);
-
-        Organization university = new Organization(new Link(createsRandomString(), createsRandomString()),
-                universityList);
 
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);

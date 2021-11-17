@@ -2,7 +2,7 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.exeption.StorageException;
 import com.urise.webapp.model.Resume;
-import com.urise.webapp.storage.serializer.SerializeAble;
+import com.urise.webapp.storage.serializer.SerialStrategy;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -15,11 +15,11 @@ import java.util.stream.Stream;
 
 public class PathStorage extends AbstractStorage<Path> {
     private final Path directory;
-    private SerializeAble serializeAble;
+    private final SerialStrategy serialStrategy;
 
-    protected PathStorage(String dir, SerializeAble serializeAble) {
+    protected PathStorage(String dir, SerialStrategy serialStrategy) {
         directory = Paths.get(dir);
-        this.serializeAble = serializeAble;
+        this.serialStrategy = serialStrategy;
         Objects.requireNonNull(dir, "Directory mustn't be null");
         if (!Files.isDirectory(directory) || !Files.isWritable(directory)) {
             throw new IllegalArgumentException(dir + "isn't directory or isn't writable");
@@ -28,16 +28,12 @@ public class PathStorage extends AbstractStorage<Path> {
 
     @Override
     public void clear() {
-        try {
-            Files.list(directory).forEach(this::deleteResume);
-        } catch (IOException e) {
-            throw new StorageException("Path delete error", directory.toString(), e);
-        }
+        getFilesList().forEach(this::deleteResume);
     }
 
     @Override
-    public int size() throws IOException {
-        return (int) Files.list(directory).count();
+    public int size() {
+        return (int) getFilesList().count();
     }
 
     @Override
@@ -48,7 +44,7 @@ public class PathStorage extends AbstractStorage<Path> {
     @Override
     protected void updateResume(Resume r, Path path) {
         try {
-            serializeAble.doWrite(r, new BufferedOutputStream(Files.newOutputStream(path)));
+            serialStrategy.doWrite(r, new BufferedOutputStream(Files.newOutputStream(path)));
         } catch (IOException e) {
             throw new StorageException("Path delete error", getFilesName(path), e);
         }
@@ -72,7 +68,7 @@ public class PathStorage extends AbstractStorage<Path> {
     @Override
     protected Resume getElement(Path path) {
         try {
-            return serializeAble.doRead(new BufferedInputStream(Files.newInputStream(path)));
+            return serialStrategy.doRead(new BufferedInputStream(Files.newInputStream(path)));
         } catch (IOException e) {
             throw new StorageException("Path read error", getFilesName(path), e);
         }

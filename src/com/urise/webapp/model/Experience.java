@@ -4,8 +4,20 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public record Experience(LocalDate startDate, LocalDate endDate, String description,
-                         String title) implements Serializable {
+public class Experience implements Serializable {
+    Organization organization;
+    LocalDate startDate;
+    LocalDate endDate;
+    String description;
+    String title;
+
+    public Experience(Organization organization, LocalDate startDate, LocalDate endDate, String description, String title) {
+        this.organization = organization;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
+        this.title = title;
+    }
 
     @Override
     public boolean equals(Object o) {
