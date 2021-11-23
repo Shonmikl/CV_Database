@@ -29,7 +29,9 @@ public class FileStorage extends AbstractStorage<File> {
     @Override
     public void clear() {
         File[] files = fileList();
-        if (files != null) {
+        if (files == null) {
+            throw new NullPointerException();
+        } else {
             for (File file : files) {
                 deleteResume(file);
             }
@@ -68,6 +70,7 @@ public class FileStorage extends AbstractStorage<File> {
         } catch (IOException e) {
             throw new StorageException("Path delete error", "IO error", e);
         }
+        updateResume(r, file);
     }
 
     @Override
