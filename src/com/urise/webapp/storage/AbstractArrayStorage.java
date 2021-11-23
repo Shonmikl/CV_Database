@@ -33,7 +33,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
 
     @Override
     protected void saveResume(Resume r, Integer key) {
-        if (size >= STORAGE_LIMIT ) {
+        if (size >= STORAGE_LIMIT) {
             throw new StorageException("Overflow", r.getUuid());
         }
         insert(r, (key));

@@ -7,7 +7,9 @@ public class TextSection extends AbstractSection {
     @Serial
     private static final long serialVersionUID = 1L;
     private final String content;
+
     public TextSection(String content) {
+        Objects.requireNonNull(content, "content must not be null");
         this.content = content;
     }
 

@@ -18,8 +18,8 @@ public class PathStorage extends AbstractStorage<Path> {
     private final SerialStrategy serialStrategy;
 
     protected PathStorage(String dir, SerialStrategy serialStrategy) {
-        directory = Paths.get(dir);
         this.serialStrategy = serialStrategy;
+        directory = Paths.get(dir);
         Objects.requireNonNull(dir, "Directory mustn't be null");
         if (!Files.isDirectory(directory) || !Files.isWritable(directory)) {
             throw new IllegalArgumentException(dir + "isn't directory or isn't writable");

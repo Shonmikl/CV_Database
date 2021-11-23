@@ -8,8 +8,18 @@ public class OrganizationSection extends AbstractSection {
     @Serial
     private static final long serialVersionUID = 1L;
     private final List<Organization> organizations;
+
     public OrganizationSection(Organization organizations) {
         this.organizations = List.of(organizations);
+    }
+
+    public OrganizationSection(List<Organization> organizations) {
+        Objects.requireNonNull(organizations, "organizations must not be null");
+        this.organizations = organizations;
+    }
+
+    public List<Organization> getOrganizations() {
+        return organizations;
     }
 
     @Override
@@ -22,11 +32,11 @@ public class OrganizationSection extends AbstractSection {
 
     @Override
     public int hashCode() {
-        return Objects.hash(organizations);
+        return organizations.hashCode();
     }
 
     @Override
     public String toString() {
-        return "* " +  organizations + "\n";
+        return "* " + organizations + "\n";
     }
 }

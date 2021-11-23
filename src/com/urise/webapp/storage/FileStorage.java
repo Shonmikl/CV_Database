@@ -99,7 +99,7 @@ public class FileStorage extends AbstractStorage<File> {
         return list;
     }
 
-    private File[] fileList () {
+    private File[] fileList() {
         return directory.listFiles();
     }
 }

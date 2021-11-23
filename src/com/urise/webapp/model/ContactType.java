@@ -6,7 +6,7 @@ public enum ContactType {
     MAIL("E-MAIL"),
     SOCIAL_NETWORKS("SOCIAL_NETWORKS"),;
 
-    String title;
+    private final String title;
 
     ContactType(String title) {
         this.title = title;

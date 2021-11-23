@@ -9,7 +9,6 @@ public class MapResumeStorage extends AbstractStorage<Resume> {
 
     @Override
     protected Object getKey(String uuid) {
-        //return hashMapStorage.get(uuid);
         return storageMap.get(uuid);
     }
 
