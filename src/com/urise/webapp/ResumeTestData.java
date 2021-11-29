@@ -17,8 +17,11 @@ public class ResumeTestData {
         Map<SectionType, AbstractSection> resumeSectionTypeMap = new EnumMap<>(SectionType.class);
 
         resumeContactTypeMap.put(ContactType.MAIL, createsRandomString());
-        resumeContactTypeMap.put(ContactType.PHONE_NUMBER, createsRandomString());
-        resumeContactTypeMap.put(ContactType.SOCIAL_NETWORKS, createsRandomString());
+        resumeContactTypeMap.put(ContactType.MOBILE, createsRandomString());
+        resumeContactTypeMap.put(ContactType.FACEBOOK, createsRandomString());
+        resumeContactTypeMap.put(ContactType.GITHUB, createsRandomString());
+        resumeContactTypeMap.put(ContactType.SKYPE, createsRandomString());
+        resumeContactTypeMap.put(ContactType.LINKEDIN, createsRandomString());
 
         resume.setContacts(resumeContactTypeMap);
 
