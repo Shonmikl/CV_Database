@@ -1,12 +1,10 @@
 package com.urise.webapp;
 
 import com.urise.webapp.model.*;
-
 import java.time.LocalDate;
 import java.util.*;
 
 public class ResumeTestData {
-
     public static void main(String[] args) {
         System.out.println(receiveFilledResume(createsRandomString(), createsRandomString()));
     }
@@ -36,7 +34,7 @@ public class ResumeTestData {
 
         AbstractSection qualificationAbstractSection = new TextSection(createsRandomString());
         resumeSectionTypeMap.put(SectionType.QUALIFICATIONS, qualificationAbstractSection);
-        /////////////////////////////////////////////////////////////////////////////////////////////
+
         LocalDate slStartDate = LocalDate.of(2017, 7, 15);
         LocalDate slEndDate = LocalDate.of(2020, 10, 1);
         List<Organization.Experience> workExperiences = new ArrayList<>();
@@ -56,7 +54,6 @@ public class ResumeTestData {
         educationExperiences.add(university2);
         Organization university = new Organization(new Link(createsRandomString(), createsRandomString()), educationExperiences);
 
-
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);
         resume.setSections(resumeSectionTypeMap);
@@ -71,6 +68,7 @@ public class ResumeTestData {
             System.out.println(map.getValue());
         }
         System.out.println("*******************************************");
+
         for (Map.Entry<SectionType, AbstractSection> map1 : resumeSectionTypeMap.entrySet()) {
             System.out.println(map1);
             System.out.println("*******************************************");
