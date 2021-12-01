@@ -66,6 +66,7 @@ public class ResumeTestData {
 
         System.out.println(resume.getFullName());
         System.out.println("*******************************************");
+        
         for (Map.Entry<ContactType, String> map : resumeContactTypeMap.entrySet()) {
             System.out.println(map.getValue());
         }
