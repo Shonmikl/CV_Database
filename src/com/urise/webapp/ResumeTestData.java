@@ -8,7 +8,7 @@ import java.util.*;
 
 public class ResumeTestData {
     public static void main(String[] args) {
-        System.out.println(receiveFilledResume(createsRandomString(), createsRandomString()));
+        System.out.println(receiveFilledResume(createRandomString(), createRandomString()));
     }
 
     public static Resume receiveFilledResume(String uuid, String name) {
@@ -16,45 +16,45 @@ public class ResumeTestData {
         Map<ContactType, String> resumeContactTypeMap = new EnumMap<>(ContactType.class);
         Map<SectionType, AbstractSection> resumeSectionTypeMap = new EnumMap<>(SectionType.class);
 
-        resumeContactTypeMap.put(ContactType.MAIL, createsRandomString());
-        resumeContactTypeMap.put(ContactType.MOBILE, createsRandomString());
-        resumeContactTypeMap.put(ContactType.FACEBOOK, createsRandomString());
-        resumeContactTypeMap.put(ContactType.GITHUB, createsRandomString());
-        resumeContactTypeMap.put(ContactType.SKYPE, createsRandomString());
-        resumeContactTypeMap.put(ContactType.LINKEDIN, createsRandomString());
+        resumeContactTypeMap.put(ContactType.MAIL, createRandomString());
+        resumeContactTypeMap.put(ContactType.MOBILE, createRandomString());
+        resumeContactTypeMap.put(ContactType.FACEBOOK, createRandomString());
+        resumeContactTypeMap.put(ContactType.GITHUB, createRandomString());
+        resumeContactTypeMap.put(ContactType.SKYPE, createRandomString());
+        resumeContactTypeMap.put(ContactType.LINKEDIN, createRandomString());
 
         resume.setContacts(resumeContactTypeMap);
 
-        AbstractSection positionAbstractSection = new TextSection(createsRandomString());
+        AbstractSection positionAbstractSection = new TextSection(createRandomString());
         resumeSectionTypeMap.put(SectionType.OBJECTIVE, positionAbstractSection);
 
-        AbstractSection personalityAbstractSection = new TextSection(createsRandomString());
+        AbstractSection personalityAbstractSection = new TextSection(createRandomString());
         resumeSectionTypeMap.put(SectionType.PERSONAL, personalityAbstractSection);
 
-        AbstractSection achievementAbstractSection = new TextSection(createsRandomString());
+        AbstractSection achievementAbstractSection = new TextSection(createRandomString());
         resumeSectionTypeMap.put(SectionType.ACHIEVEMENT, achievementAbstractSection);
 
-        AbstractSection qualificationAbstractSection = new TextSection(createsRandomString());
+        AbstractSection qualificationAbstractSection = new TextSection(createRandomString());
         resumeSectionTypeMap.put(SectionType.QUALIFICATIONS, qualificationAbstractSection);
 
         LocalDate slStartDate = LocalDate.of(2017, 7, 15);
         LocalDate slEndDate = LocalDate.of(2020, 10, 1);
         List<Organization.Experience> workExperiences = new ArrayList<>();
-        Organization.Experience softLine = new Organization.Experience(slStartDate, slEndDate, createsRandomString(), createsRandomString());
+        Organization.Experience softLine = new Organization.Experience(slStartDate, slEndDate, createRandomString(), createRandomString());
         workExperiences.add(softLine);
-        Organization softLineCompany = new Organization(new Link(createsRandomString(), createsRandomString()), workExperiences);
+        Organization softLineCompany = new Organization(new Link(createRandomString(), createRandomString()), workExperiences);
 
         LocalDate universityStartDate1 = LocalDate.of(2004, 9, 15);
         LocalDate universityEndDate1 = LocalDate.of(2008, 7, 11);
-        Organization.Experience university1 = new Organization.Experience(universityStartDate1, universityEndDate1, createsRandomString(), createsRandomString());
+        Organization.Experience university1 = new Organization.Experience(universityStartDate1, universityEndDate1, createRandomString(), createRandomString());
 
         LocalDate universityStartDate2 = LocalDate.of(2006, 3, 11);
         LocalDate universityEndDate2 = LocalDate.of(2007, 4, 21);
-        Organization.Experience university2 = new Organization.Experience(universityStartDate2, universityEndDate2, createsRandomString(), createsRandomString());
+        Organization.Experience university2 = new Organization.Experience(universityStartDate2, universityEndDate2, createRandomString(), createRandomString());
         List<Organization.Experience> educationExperiences = new ArrayList<>();
         educationExperiences.add(university1);
         educationExperiences.add(university2);
-        Organization university = new Organization(new Link(createsRandomString(), createsRandomString()), educationExperiences);
+        Organization university = new Organization(new Link(createRandomString(), createRandomString()), educationExperiences);
 
         AbstractSection universityAbstractSection = new OrganizationSection(university);
         resumeSectionTypeMap.put(SectionType.EDUCATION, universityAbstractSection);
@@ -78,7 +78,7 @@ public class ResumeTestData {
         return resume;
     }
 
-    public static @NotNull String createsRandomString() {
+    public static @NotNull String createRandomString() {
         String list = "Q1W2E3R4T5Y6U7I8O9P0A9S8D7F6G5H4J3K2L0M";
         char[] listChar = list.toCharArray();
         Random random = new Random();
