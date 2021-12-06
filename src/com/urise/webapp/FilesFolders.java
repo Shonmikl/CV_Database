@@ -16,7 +16,7 @@ public class FilesFolders {
                 if (file.isFile()) {
                     System.out.println(indent + " | " + file.getName());
                 } else if (file.isDirectory()) {
-                    System.out.println(indent + " | " + file);
+                    System.out.println(indent + " | " + file.getName());
                     displayFileName(file, indent + "   ");
                 }
             }
