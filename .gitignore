@@ -1,4 +1,4 @@
 *.xml
-*basejava.iml
+.iml
 .idea
 out
