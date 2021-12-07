@@ -1,7 +1,6 @@
 package com.urise.webapp;
 
 import com.urise.webapp.model.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -78,7 +77,7 @@ public class ResumeTestData {
         return resume;
     }
 
-    public static @NotNull String createRandomString() {
+    public static String createRandomString() {
         String list = "Q1W2E3R4T5Y6U7I8O9P0A9S8D7F6G5H4J3K2L0M";
         char[] listChar = list.toCharArray();
         Random random = new Random();

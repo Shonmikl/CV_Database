@@ -19,7 +19,6 @@ public class FileStorage extends AbstractStorage<File> {
         if (!directory.isDirectory()) {
             throw new IllegalArgumentException(directory.getAbsolutePath() + " isn't directory");
         }
-
         if (!directory.canRead() || !directory.canWrite()) {
             throw new IllegalArgumentException(directory.getAbsolutePath() + " isn't readable or writable");
         }
@@ -29,15 +28,13 @@ public class FileStorage extends AbstractStorage<File> {
     @Override
     public void clear() {
         File[] files = fileList();
-        checkFiles(files);
         for (File file : files)
             deleteResume(file);
     }
 
     @Override
     public int size() {
-        String[] list = directory.list();
-        checkFiles(list);
+        File[] list = fileList();
         return list.length;
     }
 
@@ -89,7 +86,6 @@ public class FileStorage extends AbstractStorage<File> {
     @Override
     protected List<Resume> getStorageAsList() {
         File[] files = fileList();
-        checkFiles(files);
         List<Resume> list = new ArrayList<>(files.length);
         for (File f : files) {
             list.add(getElement(f));
@@ -98,11 +94,9 @@ public class FileStorage extends AbstractStorage<File> {
     }
 
     private File[] fileList() {
-        return directory.listFiles();
-    }
-
-    private void checkFiles(Object[] file) {
-        if (file == null)
+        if (directory.listFiles() == null) {
             throw new StorageException("Element is [ null ]");
+        }
+        return directory.listFiles();
     }
 }
