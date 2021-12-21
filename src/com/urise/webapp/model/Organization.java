@@ -1,5 +1,10 @@
 package com.urise.webapp.model;
 
+import com.urise.webapp.util.LocalDataAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -8,8 +13,11 @@ import java.util.Objects;
 public class Organization implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private final Link homePage;
-    private final List<Experience> experiences;
+    private Link homePage;
+    private List<Experience> experiences;
+
+    public Organization() {
+    }
 
     public Organization(Link homePage, List<Experience> experiences) {
         this.homePage = homePage;
@@ -36,9 +44,11 @@ public class Organization implements Serializable {
                 ", additionalInformationArrayList=" + experiences +
                 '}';
     }
-
+    @XmlAccessorType(XmlAccessType.FIELD)
     public static class Experience implements Serializable {
+        @XmlJavaTypeAdapter(LocalDataAdapter.class)
         LocalDate startDate;
+        @XmlJavaTypeAdapter(LocalDataAdapter.class)
         LocalDate endDate;
         String description;
         String title;

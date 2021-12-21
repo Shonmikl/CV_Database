@@ -6,8 +6,11 @@ import java.util.Objects;
 public class Link implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private final String name;
-    private final String URL;
+    private String name;
+    private String URL;
+
+    public Link() {
+    }
 
     public Link(String name, String URL) {
         Objects.requireNonNull(name, "name must not be null");
