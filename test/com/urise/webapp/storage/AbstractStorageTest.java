@@ -9,13 +9,14 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class AbstractStorageTest {
-    protected final static File STORAGE_DIR = new File("D://JavaFileTest");
+    protected final static File STORAGE_DIR = new File("D://BaseJavaTest");
     protected Storage storage;
 
     protected final String ID_1 = "001";
@@ -86,7 +87,7 @@ public abstract class AbstractStorageTest {
     @Test
     void getAllSorted() {
         List<Resume> expectedStorage = storage.getAllSorted();
-        List<Resume> testStorage = List.of(resume1, resume2, resume3);
+        List<Resume> testStorage = Arrays.asList(resume1, resume2, resume3);
         assertEquals(testStorage, expectedStorage);
     }
 
