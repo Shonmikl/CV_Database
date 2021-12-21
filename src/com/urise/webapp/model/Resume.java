@@ -1,6 +1,5 @@
 package com.urise.webapp.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.Map;

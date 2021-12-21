@@ -1,22 +1,16 @@
 package com.urise.webapp.model;
 
-import java.io.Serial;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class OrganizationSection extends AbstractSection {
 
-    @Serial
     private static final long serialVersionUID = 1L;
     private final List<Organization> organizations;
 
     public OrganizationSection(Organization organizations) {
-        this.organizations = List.of(organizations);
-    }
-
-    public OrganizationSection(List<Organization> organizations) {
-        Objects.requireNonNull(organizations, "organizations must not be null");
-        this.organizations = organizations;
+        this.organizations = Collections.singletonList(organizations);
     }
 
     @Override
