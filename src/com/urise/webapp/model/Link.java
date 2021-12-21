@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Link implements Serializable {
+
     @Serial
     private static final long serialVersionUID = 1L;
     private final String name;
@@ -14,14 +15,6 @@ public class Link implements Serializable {
         Objects.requireNonNull(name, "name must not be null");
         this.name = name;
         this.URL = URL;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getURL() {
-        return URL;
     }
 
     @Override

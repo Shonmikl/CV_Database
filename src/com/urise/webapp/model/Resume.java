@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Resume implements Comparable<Resume>, Serializable {
-    @Serial
     private static final long serialVersionUID = 1L;
     private String uuid;
     private final String fullName;

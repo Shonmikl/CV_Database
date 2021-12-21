@@ -9,8 +9,6 @@ public enum ContactType {
     SKYPE ("SKYPE"),
     LINKEDIN ("LINKED IN");
 
-
-
     private final String title;
 
     ContactType(String title) {

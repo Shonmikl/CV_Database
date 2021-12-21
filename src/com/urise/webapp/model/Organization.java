@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Organization implements Serializable {
+
     @Serial
     private static final long serialVersionUID = 1L;
     private final Link homePage;
